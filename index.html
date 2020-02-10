@@ -16,7 +16,7 @@
     <div class="col-6">
       <div class="h-100" id="map"></div>
       <div>
-        <form action="">
+        <form action="" id="form">
           <label for="destination">Where Do You Wanna Be?</label>
           <input type="text" name="destination" id="destination">
         </form>
@@ -24,10 +24,13 @@
     </div>
   </div>
 
-  <script src="components/app.js"></script>
-  <script src="components/main.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
-  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBKxtJSTByPlzIrDLdqzlZ66eIoomq__nQ&callback=initMap">
+  <!-- <script src="components/app.js"></script> -->
+  <script src="components/inputs.js"></script>
+  <script src="components/map.js"></script>
+  <script src="components/main.js"></script>
+
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBKxtJSTByPlzIrDLdqzlZ66eIoomq__nQ&callback=mapSetup.initMap">
   </script>
 </body>
 
