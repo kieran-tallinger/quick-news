@@ -1,5 +1,6 @@
+var greeting = new Greeting()
 var currnetLocationWeather = new CurrnetLocationWeather()
 var quotes = new Quotes()
-var app = new App(quotes, currnetLocationWeather)
+var app = new App(quotes, currnetLocationWeather, greeting)
 
 app.start()

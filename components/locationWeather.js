@@ -23,13 +23,10 @@ class CurrnetLocationWeather {
     var loca = document.querySelector('.location')
     var location = `city: ${data.city} zip: ${data.zip}`
     loca.textContent = location;
-    header.append(loca)
     this.lat = data.lat;
     this.lon = data.lon;
     this.getWeather(this.lat, this.lon)
   }
-
-
   getWeather(lat, lon) {
     var API_KEYS = "b932cb7ed5dadf023a482aeb62417bf3"
     $.ajax({
@@ -43,6 +40,9 @@ class CurrnetLocationWeather {
     console.log(error)
   }
   handlegetWeatherSuccess(data) {
-    console.log(data)
+    var header = document.querySelector('header')
+    var weather = document.querySelector('.weather')
+    var weatherInfo = `temp: ${data.main.temp} weather: ${data.weather[0].main}`
+    weather.textContent = weatherInfo;
   }
 }

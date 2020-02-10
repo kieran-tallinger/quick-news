@@ -19,6 +19,7 @@ class Quotes {
   handleGetQuoteSuccess(data) {
     var footer = document.querySelector('footer')
     var div = document.createElement('div')
+    div.classList.add('border', 'border-primary', 'm-1')
     var quotation = `Today's quotation: ${data.content} -by ${data.author}`
     div.textContent = quotation;
     footer.append(div)
