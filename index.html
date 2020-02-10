@@ -9,9 +9,14 @@
   </head>
   <body class="container">
     <header class="row">
-      <div class="col-3 text-left location border border-danger"></div>
+      <div class="col border border-danger">
+          <div class="location border border-primary m-1"></div>
+          <div class="weather border border-primary m-1"></div>
+      </div>
       <div class="col-6 text-center border border-danger">Header</div>
-      <div class="col-3 text-right border border-danger">Stocks & Weather</div>
+      <div class="col border border-danger">
+        stock
+      </div>
     </header>
 
     <main class="row">
@@ -39,7 +44,8 @@
     </script>
     <script src="./components/maps.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="./components/currnetLocation.js"></script>
+    <script src="./components/locationWeather.js"></script>
+    <script src="./components/greeting.js"></script>
     <script src="./components/quotes.js"></script>
     <script src="./components/App.js"></script>
     <script src="main.js"></script>
