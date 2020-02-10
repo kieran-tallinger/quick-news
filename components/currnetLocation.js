@@ -29,6 +29,7 @@ class CurrnetLocationWeather {
     this.getWeather(this.lat, this.lon)
   }
 
+
   getWeather(lat, lon) {
     var API_KEYS = "b932cb7ed5dadf023a482aeb62417bf3"
     $.ajax({

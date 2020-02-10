@@ -9,4 +9,5 @@ class App {
     this.currnetLocationWeather.getLocationWeather()
 
   }
+
 }
