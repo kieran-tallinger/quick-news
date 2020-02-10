@@ -19,7 +19,6 @@ class CurrnetLocationWeather {
     console.log(error)
   }
   handlegetLocationWeatherSuccess(data) {
-    var header = document.querySelector('header')
     var loca = document.querySelector('.location')
     var location = `city: ${data.city} zip: ${data.zip}`
     loca.textContent = location;
