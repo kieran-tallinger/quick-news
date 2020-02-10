@@ -23,7 +23,7 @@ class CurrnetLocationWeather {
     var loca = document.querySelector('.location')
     var location = `city: ${data.city} zip: ${data.zip}`
     loca.textContent = location;
-    header.append(loca)
+    header.prepend(loca)
     this.lat = data.lat;
     this.lon = data.lon;
     this.getWeather(this.lat, this.lon)
