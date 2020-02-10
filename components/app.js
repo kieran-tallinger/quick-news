@@ -2,7 +2,7 @@ var map, infoWindow;
 function initMap() {
   map = new google.maps.Map(document.getElementById('map'), {
     center: { lat: -15.6567, lng: 100.2345 },
-    zoom: 12
+    zoom: 16
   });
   infoWindow = new google.maps.InfoWindow;
 
@@ -19,11 +19,16 @@ function initMap() {
         map: map
       })
 
+      var trafficLayer = new google.maps.TrafficLayer();
+      trafficLayer.setMap(map)
+
       infoWindow.setPosition(pos);
       infoWindow.setContent('Location found.');
       infoWindow.open(map);
       map.setCenter(pos);
       map.data.loadGeoJson('https://storage.googleapis.com/mapsdevsite/json/google.json')
+      map.data.setStyle({fillColor: 'green'})
+
     }, function () {
       handleLocationError(true, infoWindow, map.getCenter());
     });
