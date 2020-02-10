@@ -17,8 +17,10 @@ class Quotes {
     console.log(error)
   }
   handleGetQuoteSuccess(data) {
-    var footer = document.getElementById('footer')
+    var footer = document.querySelector('footer')
+    footer.className = 'd-flex justify-content-center'
     var div = document.createElement('div')
+    div.className = 'border border-danger'
     var quotation = `Today's quotation: ${data.content} -by ${data.author}`
     div.textContent = quotation;
     div.setAttribute('class', 'col');
