@@ -17,10 +17,11 @@ class Quotes {
     console.log(error)
   }
   handleGetQuoteSuccess(data) {
-    var footer = document.querySelector('footer')
+    var footer = document.getElementById('footer')
     var div = document.createElement('div')
     var quotation = `Today's quotation: ${data.content} -by ${data.author}`
     div.textContent = quotation;
-    footer.append(div)
+    div.setAttribute('class', 'col');
+    footer.appendChild(div)
   }
 }

@@ -3,6 +3,7 @@ class MapSetup {
     this.mapSpot = mapSpot;
     this.map = null;
     this.infoWindow = null;
+    this.initMap = this.initMap.bind(this);
   }
   initMap(){
     this.map = new google.maps.Map(this.mapSpot, {
@@ -22,9 +23,6 @@ class MapSetup {
           position: pos,
           map: map
         })
-
-        var trafficLayer = new google.maps.TrafficLayer();
-        trafficLayer.setMap(map)
 
         this.infoWindow.setPosition(pos);
         this.infoWindow.setContent('Location found.');
