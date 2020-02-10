@@ -7,7 +7,7 @@ class MapSetup {
   }
   initMap(){
     this.map = new google.maps.Map(this.mapSpot, {
-      center: { lat: -15.6567, lng: 100.2345 },
+      center: { lat: -34.397, lng: 150.644 },
       zoom: 16
     });
     this.infoWindow = new google.maps.InfoWindow;
@@ -28,8 +28,6 @@ class MapSetup {
         this.infoWindow.setContent('Location found.');
         this.infoWindow.open(map);
         this.map.setCenter(pos);
-        this.map.data.loadGeoJson('https://storage.googleapis.com/mapsdevsite/json/google.json')
-        this.map.data.setStyle({ fillColor: 'green' })
 
       }, function () {
         this.handleLocationError(true, this.infoWindow, this.map.getCenter());
