@@ -10,6 +10,9 @@ class Map {
     this.renderMap = this.renderMap.bind(this);
     this.addMarker = this.addMarker.bind(this);
     this.removeMarker = this.removeMarker.bind(this);
+    // this.setMapHandler = this.setMapHandler.bind(this);
+    // this.handleDrag = this.handleDrag.bind(this);
+    // this.switchToAsyncScript = this.switchToAsyncScript.bind(this);
     this.handleGetLocationError = this.handleGetLocationError.bind(this);
   }
   getLocation(){
@@ -35,13 +38,19 @@ class Map {
         lng: newMapLoc.lng
       },
       zoom: 16,
-      gestureHandling: "auto",
-
+      gestureHandling: "none",
+      minZoom: 10,
+      maxZoom: 17,
+      fullscreenControl: true
     }
-    this.addMarker(this.pos, this.map);
+
+
     var newMap = new google.maps.Map(this.mapSpot, this.mapConfig);
     this.map = newMap;
-
+    console.log ('hi from renderMap')
+    this.addMarker(this.pos, this.map);
+    // this.setMapHandler();
+    // this.switchToAsyncScript();
   }
   addMarker(newMarkerLoc, map){
     console.log('add marker', newMarkerLoc, map)
@@ -54,4 +63,21 @@ class Map {
   handleGetLocationError(){
     console.error('Error')
   }
+  // setMapHandler(){
+  //   this.map.addListener('center_changed', this.handleDrag)
+  // }
+  // handleDrag(){
+  //   window.setTimeout(function() {
+  //     this.map.panTo(this.map.center);
+  //   }, 3000);
+  // }
+  // switchToAsyncScript(){
+  //   $('#google').remove();
+  //   var newGoogleScript = document.createElement('script');
+  //   newGoogleScript.setAttribute('async', '');
+  //   newGoogleScript.setAttribute('defer', '');
+  //   newGoogleScript.setAttribute('id', 'google');
+  //   newGoogleScript.src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyDaOU1SAe_B5ogKnNcBj-EqY_Lq8Y9cvDE&callback=map.renderMap";
+  //   document.querySelector('body').appendChild(newGoogleScript);
+  // }
 }

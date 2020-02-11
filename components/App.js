@@ -13,6 +13,5 @@ class App {
     this.currnetLocationWeather.getLocationWeather();
     this.greeting.loadName();
     this.stockInfo.getStocks()
-    this.map.getLocation();
   }
 }
