@@ -7,15 +7,12 @@ class App {
     this.stockInfo = stockInfo;
     this.map = map;
   }
-
   start() {
     this.news.getNews();
     this.quotes.getQuotes();
     this.currnetLocationWeather.getLocationWeather();
     this.greeting.loadName();
-    this.news.getNews();
     this.stockInfo.getStocks()
     this.map.getLocation();
   }
-
 }
