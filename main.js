@@ -1,3 +1,4 @@
+var map, infoWindow;
 var news = new News();
 var greeting = new Greeting();
 var currnetLocationWeather = new CurrnetLocationWeather();
