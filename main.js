@@ -9,5 +9,5 @@ var quotes = new Quotes();
 var mapLayers = new MapLayers(map);
 var app = new App(quotes, currnetLocationWeather, greeting, news, stockInfo);
 
-// mapLayers.setButtonHandlers();
+mapLayers.setButtonHandlers();
 app.start();

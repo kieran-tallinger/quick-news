@@ -1,26 +1,35 @@
 class MapLayers {
   constructor(map){
-    var trafficButton = document.getElementById('traffic-button');
-    var transitButton = document.getElementById('transit-button');
-    var bikingButton = document.getElementById('biking-button');
+    this.trafficButton = document.getElementById('traffic-button');
+    this.transitButton = document.getElementById('transit-button');
+    this.bikingButton = document.getElementById('biking-button');
+    this.trafficLayer = null;
+    this.transitLayer = null;
+    this.bikingLayer = null;
     this.setButtonHandlers = this.setButtonHandlers.bind(this);
+    this.createTrafficLayer = this.createTrafficLayer.bind(this);
+    this.createTransitLayer = this.createTransitLayer.bind(this);
+    this.createBikingLayer = this.createBikingLayer.bind(this);
     this.map = map;
   }
   createTrafficLayer(){
-    var trafficLayer = new google.maps.TrafficLayer
-    trafficButton.setMap(this.map);
+    this.trafficLayer = new google.maps.TrafficLayer
+    this.trafficLayer.setMap(this.map);
+    console.log("hi from traffic")
   }
   createTransitLayer(){
-    var transitLayer = new google.maps.TransitLayer
-    trafficButton.setMap(this.map);
+    this.transitLayer = new google.maps.TransitLayer
+    this.transitLayer.setMap(this.map);
+    console.log("hi from transit")
   }
   createBikingLayer(){
-    var bikingLayer = new google.maps.BicyclingLayer
-    trafficButton.setMap(this.map);
+    this.bikingLayer = new google.maps.BicyclingLayer
+    this.bikingLayer.setMap(this.map);
+    console.log("hi from biking")
   }
   setButtonHandlers(){
-    this.trafficButton.addEventListener('click', createTrafficLayer);
-    this.transitButton.addEventListener('click', createTransitLayer);
-    this.bikingButton.addEventListener('click', createTrafficLayer);
+    this.trafficButton.addEventListener('click', this.createTrafficLayer);
+    this.transitButton.addEventListener('click', this.createTransitLayer);
+    this.bikingButton.addEventListener('click', this.createBikingLayer);
   }
 }
