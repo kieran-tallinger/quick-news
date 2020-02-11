@@ -11,7 +11,7 @@ class App {
     this.quotes.getQuotes();
     this.currnetLocationWeather.getLocationWeather();
     this.greeting.loadName();
-    this.news.start();
+    this.news.getNews();
     this.stockInfo.getStocks()
   }
 
