@@ -8,7 +8,7 @@ class App {
   start() {
     this.quotes.getQuotes()
     this.currnetLocationWeather.getLocationWeather()
-    this.greeting.getName()
+    this.greeting.loadName()
   }
 
 }
