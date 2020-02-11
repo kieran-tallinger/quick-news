@@ -20,7 +20,7 @@ class CurrnetLocationWeather {
   }
   handlegetLocationWeatherSuccess(data) {
     var loca = document.querySelector('.location')
-    var location = `city: ${data.city} zip: ${data.zip}`
+    var location = `${data.city} ${data.zip}`
     loca.textContent = location;
     this.lat = data.lat;
     this.lon = data.lon;
@@ -41,10 +41,16 @@ class CurrnetLocationWeather {
   handlegetWeatherSuccess(data) {
     var header = document.querySelector('header')
     var weather = header.querySelector('.weather')
-    var weatherInfo = `${data.main.temp} ℉ `
+    var temp = Math.round(data.main.temp)
+    var max = Math.round(data.main.temp_max)
+    var min = Math.round(data.main.temp_min)
+    var weatherInfo = `${temp} ℉ `
     weather.textContent = weatherInfo;
     var icon = document.createElement('img')
     icon.setAttribute('src', `http://openweathermap.org/img/wn/${data.weather[0].icon}.png`)
     weather.append(icon)
+    var spanTag = document.createElement('span')
+    spanTag.innerHTML = `<span class="max small ">${max}º</span> <span class="min small text-muted">${min}º</span>`
+    weather.append(spanTag)
   }
 }
