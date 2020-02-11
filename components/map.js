@@ -10,9 +10,6 @@ class Map {
     this.renderMap = this.renderMap.bind(this);
     this.addMarker = this.addMarker.bind(this);
     this.removeMarker = this.removeMarker.bind(this);
-    // this.setMapHandler = this.setMapHandler.bind(this);
-    // this.handleDrag = this.handleDrag.bind(this);
-    // this.switchToAsyncScript = this.switchToAsyncScript.bind(this);
     this.handleGetLocationError = this.handleGetLocationError.bind(this);
   }
   getLocation(){
@@ -29,7 +26,7 @@ class Map {
     }
     this.pos = newPos;
     this.renderMap(this.pos);
-
+    console.log('hi from assign')
   }
   renderMap(newMapLoc){
     this.mapConfig = {
@@ -63,21 +60,4 @@ class Map {
   handleGetLocationError(){
     console.error('Error')
   }
-  // setMapHandler(){
-  //   this.map.addListener('center_changed', this.handleDrag)
-  // }
-  // handleDrag(){
-  //   window.setTimeout(function() {
-  //     this.map.panTo(this.map.center);
-  //   }, 3000);
-  // }
-  // switchToAsyncScript(){
-  //   $('#google').remove();
-  //   var newGoogleScript = document.createElement('script');
-  //   newGoogleScript.setAttribute('async', '');
-  //   newGoogleScript.setAttribute('defer', '');
-  //   newGoogleScript.setAttribute('id', 'google');
-  //   newGoogleScript.src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyDaOU1SAe_B5ogKnNcBj-EqY_Lq8Y9cvDE&callback=map.renderMap";
-  //   document.querySelector('body').appendChild(newGoogleScript);
-  // }
 }
