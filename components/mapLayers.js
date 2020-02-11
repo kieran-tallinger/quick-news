@@ -11,8 +11,32 @@ class MapLayers {
     this.createTransitLayer = this.createTransitLayer.bind(this);
     this.createBikingLayer = this.createBikingLayer.bind(this);
     this.map = map;
+    this.pos = null;
   }
   createTrafficLayer(){
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(function (position) {
+        this.pos = {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude
+        };
+
+        var marker = new google.maps.Marker({ position: pos, map: map })
+
+        infoWindow.setPosition(pos);
+        infoWindow.setContent('Location found.');
+        infoWindow.open(map);
+        map.setCenter(pos);
+      }, function () {
+        handleLocationError(true, infoWindow, map.getCenter());
+      });
+    } else {
+      handleLocationError(false, infoWindow, map.getCenter());
+    }
+    this.map = new google.maps.Map(document.getElementById('map'), {
+          center: this.pos,
+          zoom: 16
+        });
     this.trafficLayer = new google.maps.TrafficLayer
     this.trafficLayer.setMap(this.map);
     console.log("hi from traffic")
