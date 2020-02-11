@@ -7,10 +7,10 @@ class App {
     this.stockInfo = stockInfo
   }
   start() {
-    this.news.getNews();
     this.quotes.getQuotes();
     this.currnetLocationWeather.getLocationWeather();
     this.greeting.loadName();
     this.stockInfo.getStocks()
+    this.news.searchNews()
   }
 }
