@@ -1,9 +1,10 @@
 class App {
-  constructor(quotes, currnetLocationWeather, greeting, news) {
+  constructor(quotes, currnetLocationWeather, greeting, news, stockInfo) {
     this.quotes = quotes;
     this.greeting = greeting;
     this.currnetLocationWeather = currnetLocationWeather;
     this.news = news;
+    this.stockInfo = stockInfo
   }
 
   start() {
@@ -11,6 +12,7 @@ class App {
     this.currnetLocationWeather.getLocationWeather();
     this.greeting.getName();
     this.news.start();
+    this.stockInfo.getStocks()
   }
 
 }
