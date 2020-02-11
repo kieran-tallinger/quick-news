@@ -1,40 +1,37 @@
 class MapSetup {
   constructor(mapSpot){
     this.mapSpot = mapSpot;
+    this.searchForPosition = this.searchForPosition.bind(this);
+    this.setPosition = this.setPosition.bind(this);
+    this.setPositionError = this.setPositionError.bind(this);
+    this.makeMap = this.makeMap.bind(this);
     this.map = null;
-    this.infoWindow = null;
-    this.initMap = this.initMap.bind(this);
   }
-  initMap(){
-    this.map = new google.maps.Map(this.mapSpot, {
-      center: { lat: -34.397, lng: 150.644 },
-      zoom: 16
-    });
-    this.infoWindow = new google.maps.InfoWindow;
-
+  makeMap(){
+    this.map = new google.map.Map(this.mapSpot, this.searchForPosition)
+  }
+  searchForPosition(){
+    var pos = null;
     if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(function (position) {
-        var pos = {
-          lat: position.coords.latitude,
-          lng: position.coords.longitude
-        };
-
-        var marker = new google.maps.Marker({
-          position: pos,
-          map: map
-        })
-
-        this.infoWindow.setPosition(pos);
-        this.infoWindow.setContent('Location found.');
-        this.infoWindow.open(map);
-        this.map.setCenter(pos);
-
-      }, function () {
-        this.handleLocationError(true, this.infoWindow, this.map.getCenter());
-      });
+      navigator.geolocation.getCurrentPosition(this.setPosition, this.setPositionError);
     } else {
       this.handleLocationError(false, this.infoWindow, this.map.getCenter());
     }
+    return pos
+  }
+  setPosition(position){
+    var pos = {
+      lat: position.coords.latitude,
+      lng: position.coords.longitude
+    };
+
+    var marker = new google.maps.Marker({
+      position: pos,
+      map: map
+    })
+  }
+  setPositionError(position){
+    this.handleLocationError(true, this.infoWindow, this.map.getCenter());
   }
   handleLocationError(browserHasGeolocation, infoWindow, pos) {
     infoWindow.setPosition(pos);

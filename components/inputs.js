@@ -1,4 +1,4 @@
-class FormControl {
+class InputForm {
   constructor(form){
     this.form = form;
   }
