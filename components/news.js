@@ -9,7 +9,7 @@ class News {
       method: 'GET',
       url: 'https://newsapi.org/v2/everything',
       data: {
-        'q': 'Headlines',
+        'q': 'Headline',
       },
       dataType: 'json',
       headers: {
@@ -59,9 +59,5 @@ class News {
 
   handleGetNewsError(error) {
     console.log(error);
-  }
-
-  start() {
-    this.getNews();
   }
 }
