@@ -52,6 +52,7 @@ class News {
       image.src = news.articles[i].urlToImage;
       image.setAttribute('width', '400');
       image.classList.add('img-fluid', 'rounded');
+      hr.classList.add('bg-danger');
       section.append(title, source, author, datePublished, description, image, hr);
       $('#news').append(section);
     }
