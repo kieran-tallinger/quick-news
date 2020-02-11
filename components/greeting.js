@@ -1,0 +1,13 @@
+class Greeting {
+  constructor() {
+
+  }
+
+  getName() {
+
+  }
+
+
+
+
+}

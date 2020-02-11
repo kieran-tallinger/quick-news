@@ -1,24 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.css" rel="stylesheet" />
-    <title>Learning Fuze: Hackathon 2</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+      <title>Hackathon 2</title>
   </head>
-  <body>
-    <main>
-    <div class="container">
-      <div class="row">
-        <div col="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-          <p class="display-4 text-info">Here Are Today's Headlines:</p>
-          <div id="news"></div>
-        </div>
+  <body class="container">
+    <header class="row">
+      <div class="col border border-danger">
+          <div class="location border border-primary m-1"></div>
+          <div class="weather border border-primary m-1"></div>
       </div>
-    </div>
+      <div class="col-6 text-center border border-danger">Header</div>
+      <div class="col border border-danger">
+        stock
+      </div>
+    </header>
+
+    <main class="row">
+      <div class="col-8 col-sm-8 col-md-8 col-lg-8 col-xl-8 border border-danger" id="news"></div>
+      <div class="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4 border border-danger">
+        <div class="h-100" id="map"></div>
+      </div>
     </main>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
+
+    <footer class="row"></footer>
+
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDaOU1SAe_B5ogKnNcBj-EqY_Lq8Y9cvDE&callback=initMap">
+    </script>
+    <script src="./components/maps.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="./components/locationWeather.js"></script>
+    <script src="./components/greeting.js"></script>
+    <script src="./components/quotes.js"></script>
     <script src="./components/news.js"></script>
-    <script src="./main.js"></script>
+    <script src="./components/App.js"></script>
+    <script src="main.js"></script>
+
   </body>
 </html>
