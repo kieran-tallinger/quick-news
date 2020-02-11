@@ -40,7 +40,6 @@ class CurrnetLocationWeather {
     console.log(error)
   }
   handlegetWeatherSuccess(data) {
-    console.log(data)
     var header = document.querySelector('header')
     var weather = header.querySelector('.weather')
     var temp = Math.round(data.main.temp)

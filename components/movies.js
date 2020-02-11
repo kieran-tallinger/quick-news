@@ -17,6 +17,7 @@ class Movies {
     console.log(error);
   }
   recommendMovie(obj) {
+    console.log('hi')
     var poster = document.querySelector('.Poster')
     var posterImg = document.createElement('img')
     posterImg.setAttribute('src', `${obj.medium_cover_image}`)
