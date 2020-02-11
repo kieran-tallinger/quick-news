@@ -33,15 +33,25 @@
     <main class="row">
       <div class="col-8 col-sm-8 col-md-8 col-lg-8 col-xl-8 border border-danger" id="news" style="overflow: auto; height: 800px;"></div>
       <div class="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4 border border-danger">
-        <div class="h-100" id="map"></div>
+        <div class="h-75" id="map"></div>
+        <div>
+          <form action="">
+            <label for="search">Search Area</label>
+            <input type="text" name="search" id="search">
+            <label for="destination">Destination</label>
+            <input type="text" name="destination" id="destination">
+          </form>
+        </div>
+        <div class="row">
+          <button class="col-3 mx-1">Traffic</button>
+          <button class="col-3 mx-1">Mass Transit</button>
+          <button class="col-3 mx-1">Biking</button>
+        </div>
       </div>
     </main>
 
     <footer class="row"></footer>
 
-    <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDaOU1SAe_B5ogKnNcBj-EqY_Lq8Y9cvDE&callback=initMap">
-    </script>
     <script src="./components/maps.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="./components/greeting.js"></script>
@@ -51,6 +61,7 @@
     <script src="./components/news.js"></script>
     <script src="./components/App.js"></script>
     <script src="main.js"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDaOU1SAe_B5ogKnNcBj-EqY_Lq8Y9cvDE&callback=initMap"></script>
 
   </body>
 </html>
