@@ -9,7 +9,7 @@ class News {
       method: 'GET',
       url: 'https://newsapi.org/v2/everything',
       data: {
-        'q': 'Headline',
+        'q': `'tech'`,
       },
       dataType: 'json',
       headers: {
