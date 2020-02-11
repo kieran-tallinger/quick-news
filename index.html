@@ -25,7 +25,6 @@
                       placeholder="Please enter your name"></form>
           <p class="greet d-none h1 text-warning"></p></div>
 
-
       </div>
       <div class="col border border-danger stocks-wrapper">
         <p class="stocks"></p>
@@ -36,7 +35,10 @@
 
     <main class="row">
       <div class="col-8 col-sm-8 col-md-8 col-lg-8 col-xl-8 border border-danger" id="news" style="overflow: auto; height: 800px;">
-        <h1 class="text-warning news-heading text-center">Here Are The Top Headlines:</h1>
+        <h1 class="text-warning news-heading text-center">Search The Top Headlines:</h1>
+        <div class="search">
+          <input type="text" class="searchBar w-100">
+        </div>
       </div>
       <div class="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4 border border-danger">
         <div class="h-75" id="map"></div>
@@ -55,18 +57,39 @@
         </div>
       </div>
     </main>
-
+    <footer>
+      <div class="row">
+        <div class="d-flex col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 border border-danger" id="movies"
+          style="height: 200px; overflow: auto;">
+          <div class="Poster m-1 p-1"></div>
+          <div class="desc d-flex flex-column m-1 p-1">
+            <h4 class="text-muted movieTitle"></h4>
+            <p><span class="text-muted year h6"></span>
+              <span class="text-muted rating h6"></span>
+              <span class="text-muted runtime h6"></span></p>
+            <p class="text-muted summary"></p>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script>
+      function loadScriptThing(e) {
+        news.getNews('Headlines')
+      }
+    </script>
     <script src="./components/map.js"></script>
     <script src="./components/mapLayers.js"></script>
+    <script src="./components/maps.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="./components/greeting.js"></script>
     <script src="./components/locationWeather.js"></script>
+    <script src="./components/movies.js"></script>
     <script src="./components/stocks.js"></script>
     <script src="./components/quotes.js"></script>
     <script src="./components/news.js"></script>
     <script src="./components/App.js"></script>
-    <script src="main.js"></script>
-    <script async defer id="google" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDaOU1SAe_B5ogKnNcBj-EqY_Lq8Y9cvDE&callback=map.getLocation"></script>
+    <script onload="loadScriptThing()" src="main.js"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDaOU1SAe_B5ogKnNcBj-EqY_Lq8Y9cvDE&callback=initMap"></script>
 
   </body>
 </html>
