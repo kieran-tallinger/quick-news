@@ -39,9 +39,8 @@ class News {
       author.textContent = `By: ${news.articles[i].author}`;
       author.classList.add('font-italic');
       let dateString = news.articles[i].publishedAt;
-      let dateSlice = dateString.slice(0, 10);
-      let dateSplit = dateSlice.split('-');
-      let dateFormatted = dateSplit[1] + '/' + dateSplit[2] + '/' + dateSplit[0];
+      let dateSlice = dateString.slice(0, 10).split('-');
+      let dateFormatted = `${dateSlice[1]}/${dateSlice[2]}/${dateSlice[0]}`;
       datePublished.textContent = `Published On: ${dateFormatted}`;
       datePublished.classList.add('font-italic');
       description.textContent = news.articles[i].description;
@@ -52,6 +51,7 @@ class News {
       image.src = news.articles[i].urlToImage;
       image.setAttribute('width', '400');
       image.classList.add('img-fluid', 'rounded');
+      hr.classList.add('bg-danger');
       section.append(title, source, author, datePublished, description, image, hr);
       $('#news').append(section);
     }

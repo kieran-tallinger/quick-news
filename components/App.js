@@ -8,6 +8,7 @@ class App {
   }
 
   start() {
+    this.news.getNews();
     this.quotes.getQuotes();
     this.currnetLocationWeather.getLocationWeather();
     this.greeting.loadName();

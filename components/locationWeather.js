@@ -40,8 +40,11 @@ class CurrnetLocationWeather {
   }
   handlegetWeatherSuccess(data) {
     var header = document.querySelector('header')
-    var weather = document.querySelector('.weather')
-    var weatherInfo = `temp: ${data.main.temp} weather: ${data.weather[0].main}`
+    var weather = header.querySelector('.weather')
+    var weatherInfo = `${data.main.temp} ℉ `
     weather.textContent = weatherInfo;
+    var icon = document.createElement('img')
+    icon.setAttribute('src', `http://openweathermap.org/img/wn/${data.weather[0].icon}.png`)
+    weather.append(icon)
   }
 }
