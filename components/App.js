@@ -1,14 +1,16 @@
 class App {
-  constructor(quotes, currnetLocationWeather, greeting) {
+  constructor(quotes, currnetLocationWeather, greeting, stockInfo) {
     this.quotes = quotes;
-    this.greeting = greeting;
     this.currnetLocationWeather = currnetLocationWeather
+    this.greeting = greeting;
+    this.stockInfo = stockInfo
   }
 
   start() {
     this.quotes.getQuotes()
     this.currnetLocationWeather.getLocationWeather()
     this.greeting.getName()
+    this.stockInfo.getStocks()
   }
 
 }
