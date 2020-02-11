@@ -47,5 +47,4 @@ class Greeting {
       this.paintName(currentUser)
     }
   }
-
 }
