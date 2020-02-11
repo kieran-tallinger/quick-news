@@ -2,6 +2,8 @@ class Map {
   constructor(){
     this.map = null;
     this.pos = null;
+    this.mapConfig = null;
+    this.mapSpot = document.getElementById('map');
     this.getLocation = this.getLocation.bind(this);
     this.assignPosition = this.assignPosition.bind(this);
     this.renderMap = this.renderMap.bind(this);
@@ -11,7 +13,9 @@ class Map {
   }
   getLocation(){
     if (navigator.geolocation){
-      navigator.geolocation.getCurrentPosition(this.assignPosition)
+      navigator.geolocation.getCurrentPosition(this.assignPosition,this.handleGetLocationError)
+    } else {
+      this.handleGetLocationError();
     }
   }
   assignPosition(geoPosition){
@@ -21,13 +25,21 @@ class Map {
     }
   }
   renderMap(){
-
+    this.mapConfig = {
+      center: {
+        lat: this.pos.lat,
+        lng: this.pos.lng
+      },
+      zoom: 16
+    }
+    var newMap = new google.maps.Map(this.mapSpot, this.mapConfig);
+    this.map = newMap;
   }
   addMarker(){
-
+    console.log("hi")
   }
   removeMarker(){
-
+    console.log('hi')
   }
   handleGetLocationError(){
     console.error('Error')
