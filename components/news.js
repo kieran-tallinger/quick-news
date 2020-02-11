@@ -3,13 +3,14 @@ class News {
     this.getNews = this.getNews.bind(this);
     this.handleGetNewsSuccess = this.handleGetNewsSuccess.bind(this);
     this.handleGetNewsError = this.handleGetNewsError.bind(this);
+    this.searchNews = this.searchNews.bind(this)
   }
-  getNews() {
+  getNews(input) {
     $.ajax({
       method: 'GET',
       url: 'https://newsapi.org/v2/everything',
       data: {
-        'q': 'Headline',
+        'q': `${input}`,
       },
       dataType: 'json',
       headers: {
@@ -59,5 +60,16 @@ class News {
 
   handleGetNewsError(error) {
     console.log(error);
+  }
+
+  searchNews() {
+    let searchBar = document.querySelector('.searchBar')
+    searchBar.addEventListener('keyup', (event) => {
+      let input = searchBar.value
+      if(event.keyCode === 13) {
+        $('section').remove()
+        this.getNews(input)
+      }
+    })
   }
 }

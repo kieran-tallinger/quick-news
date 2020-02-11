@@ -36,7 +36,10 @@
   
     <main class="row">
       <div class="col-8 col-sm-8 col-md-8 col-lg-8 col-xl-8 border border-danger" id="news" style="overflow: auto; height: 800px;">
-        <h1 class="text-warning news-heading text-center">Here Are The Top Headlines:</h1>
+        <h1 class="text-warning news-heading text-center">Search The Top Headlines:</h1>
+        <div class="search">
+          <input type="text" class="searchBar w-100">
+        </div>
       </div>
       <div class="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4 border border-danger">
         <div class="h-75" id="map"></div>
@@ -55,7 +58,11 @@
         </div>
       </div>
     </main>
-  
+    <script>
+      function loadScriptThing(e) {
+        news.getNews('Headlines')
+      }
+    </script>
     <script src="./components/maps.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="./components/greeting.js"></script>
@@ -64,7 +71,7 @@
     <script src="./components/quotes.js"></script>
     <script src="./components/news.js"></script>
     <script src="./components/App.js"></script>
-    <script src="main.js"></script>
+    <script onload="loadScriptThing()" src="main.js"></script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDaOU1SAe_B5ogKnNcBj-EqY_Lq8Y9cvDE&callback=initMap"></script>
 
   </body>
