@@ -5,6 +5,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.css">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+      <link rel="stylesheet" href="./style.css" />
       <title>Hackathon 2</title>
   </head>
   <body class="container">
@@ -23,17 +24,19 @@
                       aria-describedby="inputGroup-sizing-sm"
                       placeholder="Please enter your name"></form>
           <p class="greet d-none h1 text-warning"></p></div>
-        </div>
+
 
       </div>
-      <div class="col border border-danger">
-          <div class="stocks"></div>
+      <div class="col border border-danger stocks-wrapper">
+        <p class="stocks"></p>
       </div>
     </header>
     <div class="row qoute"></div>
 
     <main class="row">
-      <div class="col-8 col-sm-8 col-md-8 col-lg-8 col-xl-8 border border-danger" id="news" style="overflow: auto; height: 800px;"></div>
+      <div class="col-8 col-sm-8 col-md-8 col-lg-8 col-xl-8 border border-danger" id="news" style="overflow: auto; height: 800px;">
+        <h1 class="text-warning news-heading text-center">Here Are The Top Headlines:</h1>
+      </div>
       <div class="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4 border border-danger">
         <div class="h-75" id="map"></div>
         <div>
