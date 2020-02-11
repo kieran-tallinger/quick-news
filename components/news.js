@@ -22,6 +22,8 @@ class News {
   }
 
   handleGetNewsSuccess(news) {
+    console.log('news data:', news)
+    // console.log('sorted:', news.sort())
     for (let i = 0; i < news.articles.length; i++) {
       let section = document.createElement('section');
       let title = document.createElement('h4');
