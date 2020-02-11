@@ -61,7 +61,4 @@ class News {
     console.log(error);
   }
 
-  start() {
-    this.getNews();
-  }
 }
