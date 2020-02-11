@@ -12,6 +12,7 @@ class App {
     this.currnetLocationWeather.getLocationWeather();
     this.greeting.getName();
     this.news.start();
+    this.stockInfo.getStocks()
   }
 
 }
