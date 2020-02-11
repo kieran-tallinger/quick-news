@@ -1,0 +1,23 @@
+.stocks-wrapper {
+  overflow: hidden;
+  position: relative;
+  box-sizing: border-box;
+  height: 8em;
+}
+
+.stocks {
+  top: 6em;
+  position: relative;
+  box-sizing: border-box;
+  animation: marquee 10s linear infinite;
+}
+
+@keyframes marquee {
+  0% {
+    top: -11em;
+  }
+
+  100% {
+    top: 8em;
+  }
+}
