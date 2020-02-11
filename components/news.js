@@ -21,8 +21,7 @@ class News {
   }
 
   handleGetNewsSuccess(news) {
-    console.log(news);
-    for (let i = 0; i < 2; i++) {
+    for (let i = 0; i < news.articles.length; i++) {
       let section = document.createElement('section');
       let title = document.createElement('h4');
       let source = document.createElement('h6');
