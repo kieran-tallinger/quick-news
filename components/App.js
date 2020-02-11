@@ -1,10 +1,11 @@
 class App {
-  constructor(quotes, currnetLocationWeather, greeting, news, stockInfo) {
+  constructor(quotes, currnetLocationWeather, greeting, news, stockInfo, map) {
     this.quotes = quotes;
     this.greeting = greeting;
     this.currnetLocationWeather = currnetLocationWeather;
     this.news = news;
-    this.stockInfo = stockInfo
+    this.stockInfo = stockInfo;
+    this.map = map;
   }
 
   start() {
@@ -14,6 +15,7 @@ class App {
     this.greeting.loadName();
     this.news.getNews();
     this.stockInfo.getStocks()
+    this.map.getLocation();
   }
 
 }
