@@ -6,7 +6,6 @@ class App {
     this.news = news;
     this.stockInfo = stockInfo
   }
-
   start() {
     this.quotes.getQuotes();
     this.currnetLocationWeather.getLocationWeather();

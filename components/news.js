@@ -10,7 +10,11 @@ class News {
       method: 'GET',
       url: 'https://newsapi.org/v2/everything',
       data: {
+<<<<<<< HEAD
         'q': `${input}`,
+=======
+        'q': `'tech'`,
+>>>>>>> 18c07a3995b8ddc89fa741ea14ee889fca9f6ccd
       },
       dataType: 'json',
       headers: {
