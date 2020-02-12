@@ -1,4 +1,3 @@
-var map, infoWindow;
 let rightHeader = document.querySelector('.stocks')
 
 var news = new News();

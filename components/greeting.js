@@ -8,7 +8,7 @@ class Greeting {
 
   askName() {
     var greetingEle = document.querySelector('.greeting')
-    var form = greetingEle.querySelector('form')
+    var form = greetingEle.querySelector('#greeting-form')
     form.addEventListener('submit', this.handleSubmit)
   }
 
