@@ -1,12 +1,11 @@
 class CurrnetLocationWeather {
-  constructor(weatherCallBack) {
+  constructor() {
     this.getLocationWeather = this.getLocationWeather.bind(this)
     this.handlegetLocationWeatherError = this.handlegetLocationWeatherError.bind(this)
     this.handlegetLocationWeatherSuccess = this.handlegetLocationWeatherSuccess.bind(this)
     this.getWeather = this.getWeather.bind(this)
     this.handlegetWeatherError = this.handlegetWeatherError.bind(this)
     this.handlegetWeatherSuccess = this.handlegetWeatherSuccess.bind(this)
-
   }
   getLocationWeather() {
     $.ajax({
@@ -51,7 +50,10 @@ class CurrnetLocationWeather {
     icon.setAttribute('src', `http://openweathermap.org/img/wn/${data.weather[0].icon}.png`)
     icon.setAttribute('value', `${data.weather[0].main}`)
     weather.append(icon)
-    var spanTag = document.createElement('span')
-    spanTag.innerHTML = `<span class="max small ">${max}º</span> <span class="min small text-muted">${min}º</span>`
+    var pTag = document.createElement('p')
+    pTag.classList.add("m-0")
+    pTag.innerHTML = `<span class="max small ">${max}º</span> <span class="min small text-muted">${min}º</span>`
+    weather.append(pTag)
   }
+
 }

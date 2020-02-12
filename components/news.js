@@ -22,15 +22,12 @@ class News {
   }
 
   handleGetNewsSuccess(news) {
-    console.log('news data:', news)
     let publishedArray = []
     for(let index = 0; index < news.articles.length; index++) {
       publishedArray.push(news.articles[index].publishedAt)
       publishedArray.sort()
     }
-    console.log('Published Array:', publishedArray)
     for(let paIndex = publishedArray.length - 1; paIndex >= 0; paIndex--) {
-      console.log('paIndex / Value:', publishedArray[paIndex])
       for(let index = 0; index < news.articles.length; index++) {
         switch(news.articles[index].publishedAt) {
           case publishedArray[paIndex]:
