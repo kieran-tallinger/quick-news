@@ -34,7 +34,6 @@ class Movies {
     summary.textContent = `Summary: ${obj.summary}`
   }
   handleGetMoviesSuccess(data) {
-    console.log(data)
     var weather = document.querySelector('.weather')
     var weatherInfo = weather.querySelector('img').getAttribute('value')
     var arr =  data.data.movies
