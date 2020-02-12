@@ -1,5 +1,4 @@
 let map,infoWindow,marker1,marker2, geocoder, directionsService, directionsRenderer;
-let mapForm = document.getElementById('map-form');
 let searchInput = document.getElementById('search');
 let mapSpot = document.getElementById('map');
 let routeButton = document.getElementById('route-button');
@@ -239,8 +238,8 @@ function findPlace(inputVal) {
 }
 
 function findRoute() {
-  var start = marker1.geometry.location;
-  var end = marker2.geometry.location;
+  var start = marker1.getPosition();
+  var end = marker2.getPosition();
   var request = {
     origin: start,
     destination: end,
