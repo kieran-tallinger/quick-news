@@ -34,7 +34,6 @@ class Movies {
     summary.textContent = `Summary: ${obj.summary}`
   }
   handleGetMoviesSuccess(data) {
-    console.log(data)
     var weather = document.querySelector('.weather')
     var weatherInfo = weather.querySelector('img').getAttribute('value')
     var arr =  data.data.movies
@@ -46,12 +45,12 @@ class Movies {
       for (let i = 0; i < arr.length; i++) {
         var genres = arr[i].genres
         if (wea === "clear") {
-          if (genres.includes("Drama") || genres.includes("Action")) {
+          if (genres.includes("Family") || genres.includes("Romance") || genres.includes("Music") || genres.includes("Comedy") || genres.includes("Musical")) {
             newArr.push(arr[i])
           }
         }
         if (wea === "clouds" || wea === "rain" || wea === "drizzle") {
-          if (genres.includes("Romance") || genres.includes("Music") || genres.includes("Musical")) {
+          if (genres.includes("Action") || genres.includes("Adventure") || genres.includes("Sci-fi") || genres.includes("Western") && genres.includes(!"Family") && genres.includes(!"Romance") && genres.includes(!"Music") && genres.includes(!"Musical")) {
             newArr.push(arr[i])
           }
         }
@@ -61,7 +60,7 @@ class Movies {
           }
         }
       }
-      var ranNum = Math.floor(Math.random() * newArr.length-1)
+      var ranNum = Math.floor(Math.random() * newArr.length-1) + 1
       this.recommendMovie(newArr[ranNum])
     } else {
       this.recommendMovie(arr[randomNum])
