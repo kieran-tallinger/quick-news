@@ -17,7 +17,6 @@ class Movies {
     console.log(error);
   }
   recommendMovie(obj) {
-    console.log('hi')
     var poster = document.querySelector('.Poster')
     var posterImg = document.createElement('img')
     posterImg.setAttribute('src', `${obj.medium_cover_image}`)
@@ -31,7 +30,6 @@ class Movies {
     movieTitle.textContent = `Title: ${obj.title}`
     year.textContent = `Year: ${obj.year}`
     rating.textContent = `Rating: ${obj.rating}`
-    runtime.textContent = `Runtime: ${obj.runtime}`
     summary.textContent = `Summary: ${obj.summary}`
   }
   handleGetMoviesSuccess(data) {
@@ -40,28 +38,29 @@ class Movies {
     var arr =  data.data.movies
     var randomNum = Math.floor(Math.random() * arr.length-1)
     var weatherArr = ['clear', 'clouds', 'rain', 'snow', 'haze', 'mist', 'drizzle']
-    if(weatherArr.includes(weatherInfo.toLowerCase())) {
+    var wea = weatherInfo.toLowerCase()
+    if(weatherArr.includes(wea)) {
+      var newArr = []
       for (let i = 0; i < arr.length; i++) {
         var genres = arr[i].genres
-        if (weatherInfo.toLowerCase() === "clear") {
-          if (genres.includes("Romance")) {
-            this.recommendMovie(arr[i])
-            break;
+        if (wea === "clear") {
+          if (genres.includes("Family") || genres.includes("Romance") || genres.includes("Music") || genres.includes("Comedy") || genres.includes("Musical")) {
+            newArr.push(arr[i])
           }
         }
-        if (weatherInfo.toLowerCase() === "clouds" || weatherInfo.toLowerCase() === "rain" || weatherInfo.toLowerCase() === "snow") {
-          if (genres.includes("Thriller")) {
-            this.recommendMovie(arr[i])
-            break;
+        if (wea === "clouds" || wea === "rain" || wea === "drizzle") {
+          if (genres.includes("Action") || genres.includes("Adventure") || genres.includes("Sci-fi") || genres.includes("Western") && genres.includes(!"Family") && genres.includes(!"Romance") && genres.includes(!"Music") && genres.includes(!"Musical")) {
+            newArr.push(arr[i])
           }
         }
-        if (weatherInfo.toLowerCase() === "haze" || weatherInfo.toLowerCase() === "mist" || weatherInfo.toLowerCase() === "drizzle") {
-          if (genres.includes("Action") && genres.includes("adventure")) {
-            this.recommendMovie(arr[i])
-            break;
+        if (wea === "haze" || wea === "mist" || wea === "snow") {
+          if (genres.includes("Thriller") || genres.includes("Mystery")) {
+            newArr.push(arr[i])
           }
         }
       }
+      var ranNum = Math.floor(Math.random() * newArr.length-1) + 1
+      this.recommendMovie(newArr[ranNum])
     } else {
       this.recommendMovie(arr[randomNum])
     }
