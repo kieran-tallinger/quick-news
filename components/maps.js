@@ -18,7 +18,7 @@ function initMap() {
   geocoder = new google.maps.Geocoder();
 
   setMapListeners();
-
+  directionsRenderer.setMap(map);
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
       var pos = {
@@ -53,7 +53,7 @@ function addTrafficLayer(map) {
   geocoder = new google.maps.Geocoder();
 
   setMapListeners();
-
+  directionsRenderer.setMap(map);
   var trafficLayer = new google.maps.TrafficLayer();
   trafficLayer.setMap(map);
 
@@ -91,7 +91,7 @@ function addTransitLayer(map) {
   geocoder = new google.maps.Geocoder();
 
   setMapListeners();
-
+  directionsRenderer.setMap(map);
   var transitLayer = new google.maps.TransitLayer();
   transitLayer.setMap(map);
 
@@ -129,7 +129,7 @@ function addBikingLayer(map){
   geocoder = new google.maps.Geocoder();
 
   setMapListeners();
-
+  directionsRenderer.setMap(map);
   var bikingLayer = new google.maps.BicyclingLayer();
   bikingLayer.setMap(map)
 
@@ -224,6 +224,9 @@ function findPlace(inputVal) {
   var place = inputVal
   geocoder.geocode( {'address': inputVal}, function(results, status) {
     if (status === 'OK'){
+      if (marker2){
+        marker2.setMap(null);
+      }
       map.setCenter(results[0].geometry.location);
       placeSearchMarker(results[0].geometry.location);
       marker2.metadata = {type: 'point', id: 2};
