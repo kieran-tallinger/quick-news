@@ -1,21 +1,19 @@
-let map,infoWindow,marker;
+let map,infoWindow,marker,service;
+let mapForm = document.getElementById('map-form');
+let searchInput = document.getElementById('search');
+let mapSpot = document.getElementById('map');
 let trafficButton = document.getElementById('traffic-button');
 let transitButton = document.getElementById('transit-button');
 let bikingButton = document.getElementById('biking-button');
 
 function initMap() {
-  map = new google.maps.Map(document.getElementById('map'), {
+  map = new google.maps.Map(mapSpot, {
     center: {lat: -34.397, lng: 150.644},
     zoom: 16
   });
   infoWindow = new google.maps.InfoWindow;
 
-  google.maps.event.addListener(map, 'click', function(event){
-    if (marker){
-      removeOldMarker()
-    }
-    placeNewMarker(event.latLng);
-  });
+  setMapListeners();
 
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
@@ -39,26 +37,15 @@ function initMap() {
   }
 }
 
-function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-  infoWindow.setPosition(pos);
-  infoWindow.setContent(browserHasGeolocation ?
-                        'Error: The Geolocation service failed.' :
-                        'Error: Your browser doesn\'t support geolocation.');
-  infoWindow.open(map);
-}
-
-function setButtonHandlers() {
-  trafficButton.addEventListener('click', addTrafficLayer);
-  transitButton.addEventListener('click', addTransitLayer);
-  bikingButton.addEventListener('click', addBikingLayer);
-}
 
 function addTrafficLayer(map) {
-  map = new google.maps.Map(document.getElementById('map'), {
+  map = new google.maps.Map(mapSpot, {
     center: { lat: -34.397, lng: 150.644 },
     zoom: 16
   });
   infoWindow = new google.maps.InfoWindow;
+
+  setMapListeners();
 
   var trafficLayer = new google.maps.TrafficLayer();
   trafficLayer.setMap(map);
@@ -86,11 +73,13 @@ function addTrafficLayer(map) {
 }
 
 function addTransitLayer(map) {
-  map = new google.maps.Map(document.getElementById('map'), {
+  map = new google.maps.Map(mapSpot, {
     center: { lat: -34.397, lng: 150.644 },
     zoom: 16
   });
   infoWindow = new google.maps.InfoWindow;
+
+  setMapListeners();
 
   var transitLayer = new google.maps.TransitLayer();
   transitLayer.setMap(map);
@@ -115,15 +104,16 @@ function addTransitLayer(map) {
   } else {
     handleLocationError(false, infoWindow, map.getCenter());
   }
-
 }
 
 function addBikingLayer(map){
-  map = new google.maps.Map(document.getElementById('map'), {
+  map = new google.maps.Map(mapSpot, {
     center: { lat: -34.397, lng: 150.644 },
     zoom: 16
   });
   infoWindow = new google.maps.InfoWindow;
+
+  setMapListeners();
 
   var bikingLayer = new google.maps.BicyclingLayer();
   bikingLayer.setMap(map)
@@ -149,6 +139,58 @@ function addBikingLayer(map){
     handleLocationError(false, infoWindow, map.getCenter());
   }
 
+}
+
+function makeMapForSearch(searchInput) {
+  map = new google.maps.Map(mapSpot, {
+    center: { lat: -34.397, lng: 150.644 },
+    zoom: 16
+  });
+  infoWindow = new google.maps.InfoWindow;
+
+  setMapListeners();
+}
+
+function handleFormSubmit() {
+  var searchInputVal = searchInput.nodeValue;
+  handleFormSearchSubmit(searchInputVal);
+}
+
+function handleFormSearchSubmit(searchInput){
+  service = new google.maps.places.PlacesService(map)
+  var request = {
+    query: searchInput,
+    fields: ['latLng'],
+  }
+  service.findPlaceFromQuery(request,)
+
+}
+
+function setMapListeners(){
+  google.maps.event.addListener(map, 'click', function (event) {
+    if (marker) {
+      removeOldMarker()
+    }
+    placeNewMarker(event.latLng);
+  });
+}
+
+function setFormHandler(){
+  mapForm.addEventListener('submit', handleFormSubmit)
+}
+
+function setButtonHandlers() {
+  trafficButton.addEventListener('click', addTrafficLayer);
+  transitButton.addEventListener('click', addTransitLayer);
+  bikingButton.addEventListener('click', addBikingLayer);
+}
+
+function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+  infoWindow.setPosition(pos);
+  infoWindow.setContent(browserHasGeolocation ?
+                        'Error: The Geolocation service failed.' :
+                        'Error: Your browser doesn\'t support geolocation.');
+  infoWindow.open(map);
 }
 
 function placeNewMarker(newLocation){
