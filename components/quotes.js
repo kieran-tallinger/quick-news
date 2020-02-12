@@ -20,7 +20,7 @@ class Quotes {
     var qoute = document.querySelector('.qoute')
     qoute.className = 'd-flex justify-content-center'
     var div = document.createElement('div')
-    div.className = 'col-12 text-center border border-danger m-1'
+    div.className = 'col-12 text-center border-bottom border-dark mb-1'
     var quotation = `Today's quotation: ${data.content} -by ${data.author}`
     div.textContent = quotation;
     qoute.append(div)

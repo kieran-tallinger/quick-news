@@ -11,28 +11,28 @@
   <body class="container">
 
     <header class="row">
-      <div class="col border border-danger d-flex flex-row justify-content-center align-items-center">
-        <div class="dateTime d-flex flex-column border border-danger">
-            <div class="date my-1 py-1 border border-danger"></div>
-            <div class="time my-1 py-1 border border-danger"></div>
+      <div class="col-6 border-bottom border-dark d-flex order-1 col-sm-3 order-sm-1">
+        <div class="dateTime col mt-2">
+            <div class="date mb-3"></div>
+            <div class="time"></div>
         </div>
-        <div class="locationWeather d-flex flex-column">
-            <div class="location border border-primary m-1"></div>
-            <div class="weather border border-primary m-1 px-2"></div>
+        <div class="locationWeather col mt-2">
+            <div class="location mb-1"></div>
+            <div class="weather"></div>
           </div>
       </div>
-      <div class="col-6 border border-danger p-2 d-flex justify-content-center">
+      <div class="col-12 border-bottom border-dark p-2 d-flex text-center col-sm-6 order-sm-2">
 
         <div class="input-group input-group-lg greeting p-2 d-flex flex-column justify-content-center align-items-center">
           <form id="greeting-form"><input type="text"
-                      class="form-control border border-light"
+                      class="form-control "
                       aria-label="Large"
                       aria-describedby="inputGroup-sizing-sm"
-                      placeholder="Please enter your name"></form>
-          <p class="greet d-none h1 text-warning"></p></div>
+                      placeholder="Please Enter Your Name"></form>
+          <p class="greet d-none h1 text-dark"></p></div>
 
       </div>
-      <div class="col border border-danger stocks-wrapper">
+      <div class="col-6 border-bottom border-dark mb-3stocks-wrapper d-flex order-2 col-sm-3 order-sm-3">
         <p class="stocks"></p>
       </div>
     </header>
@@ -40,13 +40,13 @@
     <div class="row qoute"></div>
 
     <main class="row">
-      <div class="col-8 col-sm-8 col-md-8 col-lg-8 col-xl-8 border border-danger" id="news" style="overflow: auto; height: 800px;">
-        <h1 class="text-warning news-heading text-center">Search The Top Headlines:</h1>
+      <div class="col-12 order-1 border-top border-bottom border-dark mb-1 col-sm-8" id="news" style="overflow: auto; height: 800px;">
+        <h1 class="text-primary news-heading text-center">Search The Top Headlines:</h1>
         <div class="search">
-          <input type="text" class="searchBar w-100">
+          <input type="text" class="searchBar w-100 border">
         </div>
       </div>
-      <div class="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4 border border-danger">
+      <div class="col-12 order-2 border-top border-bottom border-dark mb-1 col-sm-4" style="overflow: auto; height: 800px;">
         <div class="h-75" id="map"></div>
         <div>
           <form id="map-form" action="">
@@ -55,7 +55,7 @@
           </form>
           <button id="route-button">Find Route</button>
         </div>
-        <div class="row">
+        <div class="row justify-content-center">
           <button id="traffic-button" class="col-3 mx-1">Traffic</button>
           <button id="transit-button" class="col-3 mx-1">Mass Transit</button>
           <button id="biking-button" class="col-3 mx-1">Biking</button>
@@ -63,15 +63,15 @@
       </div>
     </main>
     <footer>
-      <div class="row">
-        <div class="d-flex col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 border border-danger" id="movies"
+      <div class="col-12">
+        <div class=" col-12 w-100 border-top border-dark" id="movies"
           style="height: 200px; overflow: auto;">
-          <div class="Poster m-1 p-1"></div>
-          <div class="desc d-flex flex-column m-1 p-1">
-            <h4 class="text-muted movieTitle"></h4>
-            <p><span class="text-muted year h6"></span>
-              <span class="text-muted rating bg-warning h6"></span>
-            <p class="text-muted summary"></p>
+          <div class="Poster m-1 p-1 col-12 text-center"></div>
+          <div class="desc m-1 p-1 col-12 text-center ">
+            <h4 class="movieTitle"></h4>
+            <p><span class="year h6"></span>
+              <span class="rating text-success h6"></span>
+            <p class="summary"></p>
           </div>
         </div>
       </div>
