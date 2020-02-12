@@ -46,12 +46,12 @@ class Movies {
       for (let i = 0; i < arr.length; i++) {
         var genres = arr[i].genres
         if (wea === "clear") {
-          if (genres.includes("Drama") || genres.includes("Action")) {
+          if (genres.includes("Family") || genres.includes("Romance") || genres.includes("Music") || genres.includes("Musical")) {
             newArr.push(arr[i])
           }
         }
         if (wea === "clouds" || wea === "rain" || wea === "drizzle") {
-          if (genres.includes("Romance") || genres.includes("Music") || genres.includes("Musical")) {
+          if (genres.includes("Action") || genres.includes("Adventure") || genres.includes("Sci-fi") || genres.includes("Western")) {
             newArr.push(arr[i])
           }
         }
