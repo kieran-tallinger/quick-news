@@ -12,6 +12,7 @@
   animation: marquee 10s linear infinite;
 }
 
+
 @keyframes marquee {
   0% {
     top: -11em;

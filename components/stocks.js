@@ -34,10 +34,10 @@ class Stocks {
     }
 
     getStocks() {
-        // $.ajax({
-        //     url: `https://api.worldtradingdata.com/api/v1/stock?symbol=^GSPC,AAPL,TSLA&api_token=kpcREs46GCbzu2v8huDHwJDZ8hNxvCGITxBjpSWoFGKRnHAmCbbqeMeTM0DH`,
-        //     error: this.handleGetStocksError,
-        //     success: this.handleGetStocksSuccess
-        // })
+         $.ajax({
+             url: `https://api.worldtradingdata.com/api/v1/stock?symbol=^GSPC,AAPL,TSLA&api_token=kpcREs46GCbzu2v8huDHwJDZ8hNxvCGITxBjpSWoFGKRnHAmCbbqeMeTM0DH`,
+             error: this.handleGetStocksError,
+             success: this.handleGetStocksSuccess
+         })
     }
 }
