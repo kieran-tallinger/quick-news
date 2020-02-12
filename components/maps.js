@@ -30,7 +30,7 @@ function initMap() {
       marker1 = new google.maps.Marker({position: pos, map: map});
       marker1.metadata = {type: 'point',id: 1};
       infoWindow.setPosition(pos);
-      infoWindow.setContent("hi");
+      infoWindow.setContent("You're Here!");
       infoWindow.open(map);
       map.setCenter(pos);
       setHandlers();
