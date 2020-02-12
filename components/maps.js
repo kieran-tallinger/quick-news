@@ -1,4 +1,4 @@
-let map,infoWindow,marker,service;
+let map,infoWindow,marker, geocoder;
 let mapForm = document.getElementById('map-form');
 let searchInput = document.getElementById('search');
 let mapSpot = document.getElementById('map');
@@ -12,6 +12,8 @@ function initMap() {
     zoom: 16
   });
   infoWindow = new google.maps.InfoWindow;
+
+  geocoder = new google.maps.Geocoder();
 
   setMapListeners();
 
@@ -28,7 +30,7 @@ function initMap() {
       infoWindow.setContent("hi");
       infoWindow.open(map);
       map.setCenter(pos);
-      setButtonHandlers();
+      setHandlers();
     }, function() {
       handleLocationError(true, infoWindow, map.getCenter());
     });
@@ -37,13 +39,14 @@ function initMap() {
   }
 }
 
-
 function addTrafficLayer(map) {
   map = new google.maps.Map(mapSpot, {
     center: { lat: -34.397, lng: 150.644 },
     zoom: 16
   });
   infoWindow = new google.maps.InfoWindow;
+
+  geocoder = new google.maps.Geocoder();
 
   setMapListeners();
 
@@ -60,10 +63,10 @@ function addTrafficLayer(map) {
       var marker = new google.maps.Marker({ position: pos, map: map })
 
       infoWindow.setPosition(pos);
-      infoWindow.setContent("hi");
+      infoWindow.setContent("traffic");
       infoWindow.open(map);
       map.setCenter(pos);
-      setButtonHandlers();
+      setHandlers();
     }, function () {
       handleLocationError(true, infoWindow, map.getCenter());
     });
@@ -78,6 +81,8 @@ function addTransitLayer(map) {
     zoom: 16
   });
   infoWindow = new google.maps.InfoWindow;
+
+  geocoder = new google.maps.Geocoder();
 
   setMapListeners();
 
@@ -94,10 +99,10 @@ function addTransitLayer(map) {
       var marker = new google.maps.Marker({ position: pos, map: map })
 
       infoWindow.setPosition(pos);
-      infoWindow.setContent("hi");
+      infoWindow.setContent("transit");
       infoWindow.open(map);
       map.setCenter(pos);
-      setButtonHandlers();
+      setHandlers();
     }, function () {
       handleLocationError(true, infoWindow, map.getCenter());
     });
@@ -112,6 +117,8 @@ function addBikingLayer(map){
     zoom: 16
   });
   infoWindow = new google.maps.InfoWindow;
+
+  geocoder = new google.maps.Geocoder();
 
   setMapListeners();
 
@@ -128,10 +135,10 @@ function addBikingLayer(map){
       var marker = new google.maps.Marker({ position: pos, map: map })
 
       infoWindow.setPosition(pos);
-      infoWindow.setContent("hi");
+      infoWindow.setContent("biking");
       infoWindow.open(map);
       map.setCenter(pos);
-      setButtonHandlers();
+      setHandlers();
     }, function () {
       handleLocationError(true, infoWindow, map.getCenter());
     });
@@ -141,29 +148,28 @@ function addBikingLayer(map){
 
 }
 
-function makeMapForSearch(searchInput) {
+function makeMapForSearch(searchResult) {
   map = new google.maps.Map(mapSpot, {
-    center: { lat: -34.397, lng: 150.644 },
+    center: { lat: searchResult.lat, lng: searchResult.lng },
     zoom: 16
   });
   infoWindow = new google.maps.InfoWindow;
-
+  marker = new google.maps.Marker({ position: map.center, map: map })
   setMapListeners();
 }
 
 function handleFormSubmit() {
-  var searchInputVal = searchInput.nodeValue;
-  handleFormSearchSubmit(searchInputVal);
+  searchInput.addEventListener('keyup', (event) => {
+    let input = searchInput.value;
+    if(event.keyCode === 13) {
+      findPlace(input);
+      searchInput.value = ''
+    }
+  })
 }
 
 function handleFormSearchSubmit(searchInput){
-  service = new google.maps.places.PlacesService(map)
-  var request = {
-    query: searchInput,
-    fields: ['latLng'],
-  }
-  service.findPlaceFromQuery(request,)
-
+  console.log("hello from form", searchInput);
 }
 
 function setMapListeners(){
@@ -175,14 +181,11 @@ function setMapListeners(){
   });
 }
 
-function setFormHandler(){
-  mapForm.addEventListener('submit', handleFormSubmit)
-}
-
-function setButtonHandlers() {
+function setHandlers() {
   trafficButton.addEventListener('click', addTrafficLayer);
   transitButton.addEventListener('click', addTransitLayer);
   bikingButton.addEventListener('click', addBikingLayer);
+  handleFormSubmit();
 }
 
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {
@@ -202,4 +205,20 @@ function placeNewMarker(newLocation){
 
 function removeOldMarker(){
   marker.setMap(null);
+}
+
+function findPlace(inputVal) {
+  var place = inputVal
+  geocoder.geocode( {'address': inputVal}, function(results, status) {
+    if (status === 'OK'){
+      map.setCenter(results[0].geometry.location);
+      placeNewMarker(results[0].geometry.location);
+    } else {
+      console.log("geocode was unsuccesful because ", status);
+    }
+  })
+}
+
+function handleFindPlaceError (error) {
+  console.log(error)
 }
