@@ -53,5 +53,6 @@ class CurrnetLocationWeather {
     weather.append(icon)
     var spanTag = document.createElement('span')
     spanTag.innerHTML = `<span class="max small ">${max}º</span> <span class="min small text-muted">${min}º</span>`
+    weather.append(spanTag)
   }
 }
