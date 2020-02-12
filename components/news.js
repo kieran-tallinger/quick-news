@@ -23,8 +23,21 @@ class News {
 
   handleGetNewsSuccess(news) {
     console.log('news data:', news)
-    // console.log('sorted:', news.sort())
+    let publishedArray = []
+    for(let index = 0; index < news.articles.length; index++) {
+      publishedArray.push(news.articles[index].publishedAt)
+      publishedArray.sort()
+    }
+    console.log('Published Array:', publishedArray)
+
+
     for (let i = 0; i < news.articles.length; i++) {
+      // console.log('publishedArray:', publishedArray)
+      // console.log('sorted:', publishedArray.sort())
+      // console.log('condition index:', news.articles[i].publishedAt)
+      // if(news.articles[i].publishedAt === publishedArray[4]) {
+      //   console.log('MATCH!')
+      // }
       let section = document.createElement('section');
       let title = document.createElement('h4');
       let source = document.createElement('h6');
