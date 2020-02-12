@@ -141,13 +141,13 @@ function addBikingLayer(map){
 
 }
 
-function makeMapForSearch(searchInput) {
+function makeMapForSearch(searchResult) {
   map = new google.maps.Map(mapSpot, {
-    center: { lat: -34.397, lng: 150.644 },
+    center: { lat: searchResult.lat, lng: searchResult.lng },
     zoom: 16
   });
   infoWindow = new google.maps.InfoWindow;
-
+  marker = new google.maps.Marker({ position: map.center, map: map })
   setMapListeners();
 }
 
@@ -162,7 +162,9 @@ function handleFormSearchSubmit(searchInput){
     query: searchInput,
     fields: ['latLng'],
   }
-  service.findPlaceFromQuery(request,)
+  service.findPlaceFromQuery(request,function(results, status) {
+    makeMapForSearch(results);
+  })
 
 }
 
