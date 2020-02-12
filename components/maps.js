@@ -2,6 +2,7 @@ let map,infoWindow,marker1,marker2, geocoder, directionsService, directionsRende
 let mapForm = document.getElementById('map-form');
 let searchInput = document.getElementById('search');
 let mapSpot = document.getElementById('map');
+let routeButton = document.getElementById('route-button');
 let trafficButton = document.getElementById('traffic-button');
 let transitButton = document.getElementById('transit-button');
 let bikingButton = document.getElementById('biking-button');
@@ -185,6 +186,7 @@ function setHandlers() {
   trafficButton.addEventListener('click', addTrafficLayer);
   transitButton.addEventListener('click', addTransitLayer);
   bikingButton.addEventListener('click', addBikingLayer);
+  routeButton.addEventListener('click', findRoute);
   handleFormSubmit();
 }
 
@@ -237,5 +239,16 @@ function findPlace(inputVal) {
 }
 
 function findRoute() {
-
+  var start = marker1.geometry.location;
+  var end = marker2.geometry.location;
+  var request = {
+    origin: start,
+    destination: end,
+    travelMode: 'DRIVING'
+  };
+  directionsService.route(request, function(results, status){
+    if (status === 'OK') {
+      directionsRenderer.setDirections(results);
+    };
+  });
 }
