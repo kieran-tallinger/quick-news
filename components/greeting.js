@@ -30,11 +30,11 @@ class Greeting {
     const date = new Date()
     const hr = date.getHours()
     if (hr >= 17) {
-      greet.innerHTML = `Good evening, ${text}!`
+      greet.innerHTML = `Good Evening, ${text}!`
     } else if (hr >= 12) {
-      greet.innerHTML = `Good afternoon, ${text}!`
+      greet.innerHTML = `Good Afternoon, ${text}!`
     } else {
-      greet.innerHTML = `Good morning, ${text}!`
+      greet.innerHTML = `Good Morning, ${text}!`
     }
     localStorage.setItem("name", text)
   }
