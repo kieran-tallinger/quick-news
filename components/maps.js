@@ -1,5 +1,6 @@
 let map,infoWindow,marker1,marker2, geocoder, directionsService, directionsRenderer;
 let searchInput = document.getElementById('search');
+let mapForm = document.getElementById('map-form');
 let mapSpot = document.getElementById('map');
 let routeButton = document.getElementById('route-button');
 let trafficButton = document.getElementById('traffic-button');
@@ -186,6 +187,9 @@ function setHandlers() {
   transitButton.addEventListener('click', addTransitLayer);
   bikingButton.addEventListener('click', addBikingLayer);
   routeButton.addEventListener('click', findRoute);
+  mapForm.addEventListener('submit', function(e){
+    e.preventDefault();
+  })
   handleFormSubmit();
 }
 
