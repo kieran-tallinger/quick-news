@@ -30,7 +30,6 @@ class Movies {
     movieTitle.textContent = `Title: ${obj.title}`
     year.textContent = `Year: ${obj.year}`
     rating.textContent = `Rating: ${obj.rating}`
-    runtime.textContent = `Runtime: ${obj.runtime}`
     summary.textContent = `Summary: ${obj.summary}`
   }
   handleGetMoviesSuccess(data) {

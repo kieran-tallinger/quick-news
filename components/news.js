@@ -33,12 +33,9 @@ class News {
       console.log('paIndex / Value:', publishedArray[paIndex])
       for(let index = 0; index < news.articles.length; index++) {
         switch(news.articles[index].publishedAt) {
-          case publishedArray[paIndex]: 
-            // console.log('Match!!')
+          case publishedArray[paIndex]:
             this.createNews(news.articles[index])
             break;
-          // default:
-            // console.log(index)
         }
       }
     }
