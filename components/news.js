@@ -22,20 +22,12 @@ class News {
   }
 
   handleGetNewsSuccess(news) {
-    let publishedArray = []
-    for(let index = 0; index < news.articles.length; index++) {
-      publishedArray.push(news.articles[index].publishedAt)
-      publishedArray.sort()
-    }
-    for(let paIndex = publishedArray.length - 1; paIndex >= 0; paIndex--) {
-      for(let index = 0; index < news.articles.length; index++) {
-        switch(news.articles[index].publishedAt) {
-          case publishedArray[paIndex]:
-            this.createNews(news.articles[index])
-            break;
-        }
-      }
-    }
+    news.articles.sort(function (a, b) {
+      return ((new Date(b.publishedAt)) - (new Date(a.publishedAt)));
+    });
+    for (let i = 0; i < news.articles.length; i++) {
+      this.createNews(news.articles[i]);
+    };
   }
 
   createNews(newsInfoAtIndex) {
