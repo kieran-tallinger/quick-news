@@ -15,6 +15,6 @@ class App {
     this.stockInfo.getStocks()
     this.news.getNews('headlines');
     this.movies.getMovies();
-    this.clock.getTime();
+    setInterval(this.clock.getTime, 1000);
   }
 }

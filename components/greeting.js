@@ -7,14 +7,12 @@ class Greeting {
   }
 
   askName() {
-    var greetingEle = document.querySelector('.greeting')
-    var form = greetingEle.querySelector('#greeting-form')
+    var form = document.querySelector('.greeting #greeting-form')
     form.addEventListener('submit', this.handleSubmit)
   }
 
   handleSubmit(e) {
-  var greetingEle = document.querySelector('.greeting')
-  var input = greetingEle.querySelector('input')
+  var input = document.querySelector('.greeting input')
   e.preventDefault()
   var name =input.value
   this.paintName(name)
@@ -22,8 +20,7 @@ class Greeting {
   }
 
   paintName(text) {
-    var greetingEle = document.querySelector('.greeting')
-    var input = greetingEle.querySelector('input')
+    var input = document.querySelector('.greeting input')
     input.classList.add("d-none")
     var greet = document.querySelector('.greet')
     greet.classList.remove("d-none")
