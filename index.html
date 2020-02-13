@@ -37,7 +37,7 @@
   </header>
   <div class="row qoute"></div>
   <main class="row">
-    <div class="col-12 order-1 border-top border-bottom border-dark mb-1 col-sm-8">
+    <div class="col-12 order-1 border-top border-bottom border-dark mb-1 col-sm-8" style="overflow: auto; height: 800px;">
       <h1 class="text-primary news-heading text-center">Search The Top Headlines:</h1>
       <form class="form-inline" id="news-form">
         <input type="text" class="searchBar w-75 border" name="searchNews" required="required" />
@@ -45,8 +45,7 @@
       </form>
       <div id="news" style="overflow: auto; height: 800px;"></div>
     </div>
-    <div class="col-12 order-2 border-top border-bottom border-dark mb-1 col-sm-4"
-      style="overflow: auto; height: 800px;">
+    <div class="col-12 order-2 border-top border-bottom border-dark mb-1 col-sm-4" style="overflow: auto; height: 800px;">
       <div class="h-75" id="map"></div>
       <div>
         <form id="map-form" action="" class="row justify-content-center">
@@ -75,11 +74,6 @@
       </div>
     </div>
   </footer>
-  <script>
-    function loadScriptThing(e) {
-      news.getNews('Headlines')
-    }
-  </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="./components/clock.js"></script>
   <script src="./components/greeting.js"></script>
@@ -89,7 +83,7 @@
   <script src="./components/quotes.js"></script>
   <script src="./components/news.js"></script>
   <script src="./components/App.js"></script>
-  <script onload="loadScriptThing()" src="main.js"></script>
+  <script src="main.js"></script>
   <script src="./components/maps.js"></script>
   <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDaOU1SAe_B5ogKnNcBj-EqY_Lq8Y9cvDE&callback=initMap&libraries=places"></script>
