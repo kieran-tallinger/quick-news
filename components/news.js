@@ -1,9 +1,11 @@
 class News {
-  constructor() {
+  constructor(formElement) {
+    this.formElement = formElement;
     this.getNews = this.getNews.bind(this);
     this.handleGetNewsSuccess = this.handleGetNewsSuccess.bind(this);
     this.handleGetNewsError = this.handleGetNewsError.bind(this);
-    this.searchNews = this.searchNews.bind(this)
+    this.handleSubmitNews = this.handleSubmitNews.bind(this);
+    this.formElement.addEventListener('submit', this.handleSubmitNews);
   }
   getNews(input) {
     $.ajax({
@@ -69,15 +71,13 @@ class News {
     console.log(error);
   }
 
-  searchNews() {
-    let searchBar = document.querySelector('.searchBar')
-    searchBar.addEventListener('keyup', (event) => {
-      let input = searchBar.value
-      if(event.keyCode === 13) {
-        $('section').remove()
-        this.getNews(input)
-        searchBar.value = ''
-      }
-    })
+  handleSubmitNews(event) {
+    event.preventDefault();
+    $('#news').text('');
+    let formData = new FormData(event.target);
+    let query = formData.get('searchNews');
+    this.getNews(query);
+    event.target.reset();
   }
+
 }
