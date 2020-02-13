@@ -9,7 +9,6 @@
       <title>Hackathon 2</title>
   </head>
   <body class="container">
-
     <header class="row">
       <div class="col-6 border-bottom border-dark d-flex order-1 col-sm-3 order-sm-1">
         <div class="dateTime col mt-2">
@@ -22,29 +21,30 @@
           </div>
       </div>
       <div class="col-12 border-bottom border-dark p-2 d-flex text-center col-sm-6 order-sm-2">
-
         <div class="input-group input-group-lg greeting p-2 d-flex flex-column justify-content-center align-items-center">
-          <form id="greeting-form"><input type="text"
-                      class="form-control "
-                      aria-label="Large"
-                      aria-describedby="inputGroup-sizing-sm"
-                      placeholder="Please Enter Your Name"></form>
-          <p class="greet d-none h1 text-dark"></p></div>
-
+          <form id="greeting-form">
+            <input type="text"
+                   class="form-control "
+                   aria-label="Large"
+                   aria-describedby="inputGroup-sizing-sm"
+                   placeholder="Please Enter Your Name">
+          </form>
+          <p class="greet d-none h1 text-dark"></p>
+        </div>
       </div>
       <div class="col-6 border-bottom border-dark stocks-wrapper d-flex order-2 col-sm-3 order-sm-3">
         <p class="stocks"></p>
       </div>
     </header>
-
     <div class="row qoute"></div>
-
     <main class="row">
-      <div class="col-12 order-1 border-top border-bottom border-dark mb-1 col-sm-8" id="news" style="overflow: auto; height: 800px;">
+      <div class="col-12 order-1 border-top border-bottom border-dark mb-1 col-sm-8">
         <h1 class="text-primary news-heading text-center">Search The Top Headlines:</h1>
-        <div class="search">
-          <input type="text" class="searchBar w-100 border">
-        </div>
+          <form class="form-inline" id="news-form">
+            <input type="text" class="searchBar w-75 border" name="searchNews" required="required" />
+            <button type="submit" name="news-submit" id="news-submit">Submit</button>
+          </form>
+        <div id="news" style="overflow: auto; height: 800px;"></div>
       </div>
       <div class="col-12 order-2 border-top border-bottom border-dark mb-1 col-sm-4" style="overflow: auto; height: 800px;">
         <div class="h-75" id="map"></div>
@@ -69,7 +69,7 @@
           <div class="Poster m-1 p-1 col-12 text-center"></div>
           <div class="desc m-1 p-1 col-12 text-center ">
             <h4 class="movieTitle"></h4>
-            <p><span class="year h6"></span>
+            <p><span class="year h6"></span></p>
               <span class="rating text-success h6"></span>
             <p class="summary"></p>
           </div>

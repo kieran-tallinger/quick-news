@@ -1,7 +1,8 @@
-let rightHeader = document.querySelector('.stocks')
-var dateTime = document.querySelector('.dateTime')
+const rightHeader = document.querySelector('.stocks')
+const dateTime = document.querySelector('.dateTime')
+const formElement = document.querySelector('#news-form');
 
-var news = new News();
+var news = new News(formElement);
 var greeting = new Greeting();
 var currnetLocationWeather = new CurrnetLocationWeather();
 let stockInfo = new Stocks()

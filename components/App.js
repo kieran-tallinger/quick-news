@@ -13,7 +13,7 @@ class App {
     this.currnetLocationWeather.getLocationWeather();
     this.greeting.loadName();
     this.stockInfo.getStocks()
-    this.news.searchNews();
+    this.news.getNews('headlines');
     this.movies.getMovies();
     this.clock.getTime();
   }

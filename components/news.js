@@ -1,9 +1,11 @@
 class News {
-  constructor() {
+  constructor(formElement) {
+    this.formElement = formElement;
     this.getNews = this.getNews.bind(this);
     this.handleGetNewsSuccess = this.handleGetNewsSuccess.bind(this);
     this.handleGetNewsError = this.handleGetNewsError.bind(this);
-    this.searchNews = this.searchNews.bind(this)
+    this.handleSubmitNews = this.handleSubmitNews.bind(this);
+    this.formElement.addEventListener('submit', this.handleSubmitNews);
   }
   getNews(input) {
     $.ajax({
@@ -22,20 +24,12 @@ class News {
   }
 
   handleGetNewsSuccess(news) {
-    let publishedArray = []
-    for(let index = 0; index < news.articles.length; index++) {
-      publishedArray.push(news.articles[index].publishedAt)
-      publishedArray.sort()
-    }
-    for(let paIndex = publishedArray.length - 1; paIndex >= 0; paIndex--) {
-      for(let index = 0; index < news.articles.length; index++) {
-        switch(news.articles[index].publishedAt) {
-          case publishedArray[paIndex]:
-            this.createNews(news.articles[index])
-            break;
-        }
-      }
-    }
+    news.articles.sort(function (a, b) {
+      return ((new Date(b.publishedAt)) - (new Date(a.publishedAt)));
+    });
+    for (let i = 0; i < news.articles.length; i++) {
+      this.createNews(news.articles[i]);
+    };
   }
 
   createNews(newsInfoAtIndex) {
@@ -77,15 +71,13 @@ class News {
     console.log(error);
   }
 
-  searchNews() {
-    let searchBar = document.querySelector('.searchBar')
-    searchBar.addEventListener('keyup', (event) => {
-      let input = searchBar.value
-      if(event.keyCode === 13) {
-        $('section').remove()
-        this.getNews(input)
-        searchBar.value = ''
-      }
-    })
+  handleSubmitNews(event) {
+    event.preventDefault();
+    $('#news').text('');
+    let formData = new FormData(event.target);
+    let query = formData.get('searchNews');
+    this.getNews(query);
+    event.target.reset();
   }
+
 }
