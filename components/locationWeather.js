@@ -52,8 +52,14 @@ class CurrnetLocationWeather {
     weather.append(icon)
     var pTag = document.createElement('p')
     pTag.classList.add("m-0")
-    pTag.innerHTML = `<span class="max small ">${max}º</span> <span class="min small text-muted">${min}º</span>`
+    var maxSpan = document.createElement('span')
+    maxSpan.classList.add("max", "small")
+    maxSpan.textContent = `${max}º `
+    var minSpan = document.createElement('span')
+    minSpan.classList.add("min", "small", "text-muted")
+    minSpan.textContent = `/ ${min}º`
+    pTag.append(maxSpan)
+    pTag.append(minSpan)
     weather.append(pTag)
   }
-
 }
