@@ -252,6 +252,6 @@ function findRoute() {
   directionsService.route(request, function(results, status){
     if (status === 'OK') {
       directionsRenderer.setDirections(results);
-    };
+    }
   });
 }

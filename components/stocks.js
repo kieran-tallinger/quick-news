@@ -11,8 +11,6 @@ class Stocks {
     }
 
     handleGetStocksSuccess(data) {
-        console.log('Stocks Data!', data)
-
         for(let index = 0; index < data.data.length; index++) {
             let row = document.createElement('div')
             let columnLeft = document.createElement('div')
