@@ -1,12 +1,13 @@
 const rightHeader = document.querySelector('.stocks')
 const dateTime = document.querySelector('.dateTime')
 
-var greeting = new Greeting();
-var currnetLocationWeather = new CurrnetLocationWeather();
+let greeting = new Greeting();
+let currnetLocationWeather = new CurrnetLocationWeather();
 let stockInfo = new Stocks()
-var quotes = new Quotes();
-var movies = new Movies()
-var clock = new Clock(dateTime);
-var appMovies = new AppMovies(quotes, currnetLocationWeather, greeting, stockInfo, movies, clock);
+let quotes = new Quotes();
+let movies = new Movies()
+let clock = new Clock(dateTime);
+let nasa = new Nasa();
+let appMovies = new AppMovies(quotes, currnetLocationWeather, greeting, stockInfo, movies, clock, nasa);
 
 appMovies.start();
