@@ -41,7 +41,7 @@ function initMap() {
 function addTrafficLayer(map) {
   map = new google.maps.Map(mapSpot, {
     center: { lat: -34.397, lng: 150.644 },
-    zoom: 16
+    zoom: 14
   });
   infoWindow = new google.maps.InfoWindow;
   directionsService = new google.maps.DirectionsService();
@@ -75,7 +75,7 @@ function addTrafficLayer(map) {
 function addTransitLayer(map) {
   map = new google.maps.Map(mapSpot, {
     center: { lat: -34.397, lng: 150.644 },
-    zoom: 16
+    zoom: 14
   });
   infoWindow = new google.maps.InfoWindow;
   directionsService = new google.maps.DirectionsService();
@@ -109,7 +109,7 @@ function addTransitLayer(map) {
 function addBikingLayer(map){
   map = new google.maps.Map(mapSpot, {
     center: { lat: -34.397, lng: 150.644 },
-    zoom: 16
+    zoom: 14
   });
   infoWindow = new google.maps.InfoWindow;
   directionsService = new google.maps.DirectionsService();
