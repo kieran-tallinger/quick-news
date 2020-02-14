@@ -33,7 +33,7 @@ class Stocks {
 
     getStocks() {
          $.ajax({
-             url: `https://api.worldtradingdata.com/api/v1/stock?symbol=^GSPC,AAPL,TSLA&api_token=kpcREs46GCbzu2v8huDHwJDZ8hNxvCGITxBjpSWoFGKRnHAmCbbqeMeTM0DH`,
+             url: `https://api.worldtradingdata.com/api/v1/stock?symbol=^GSPC,AAPL,TSLA&api_token=u44kzJ2Wco8fti2AOWqasL3e4ejTWpMR7dtadQuZjVy7hfZeoOfp1md1JQSe`,
              error: this.handleGetStocksError,
              success: this.handleGetStocksSuccess
          })
