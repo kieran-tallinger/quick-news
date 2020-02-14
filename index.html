@@ -10,82 +10,71 @@
   <title>Hackathon 2</title>
 </head>
 
-<body class="container">
-  <header class="row">
-    <div class="col-6 border-bottom border-dark d-flex order-1 col-sm-3 order-sm-1">
-      <div class="dateTime col mt-2">
-        <div class="date mb-3"></div>
-        <div class="time"></div>
-      </div>
-      <div class="locationWeather col mt-2">
-        <div class="location mb-1"></div>
-        <div class="weather"></div>
-      </div>
-    </div>
-    <div class="col-12 border-bottom border-dark p-2 d-flex text-center col-sm-6 order-sm-2">
-      <div class="input-group input-group-lg greeting p-2 d-flex flex-column justify-content-center align-items-center">
-        <form id="greeting-form">
-          <input type="text" class="form-control " aria-label="Large" aria-describedby="inputGroup-sizing-sm"
-            placeholder="Please Enter Your Name">
-        </form>
-        <p class="greet d-none h1 text-dark"></p>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+        <ul class="nav nav-tabs">
+          <li class="nav-item">
+            <a href="#" class="nav-link active">Home</a>
+          </li>
+          <li class="nav-item">
+            <a href="./movies.html" class="nav-link">Movies</a>
+          </li>
+          <li class="nav-item">
+            <a href="./maps.html" class="nav-link">Maps</a>
+          </li>
+        </ul>
       </div>
     </div>
-    <div class="col-6 border-bottom border-dark stocks-wrapper d-flex order-2 col-sm-3 order-sm-3">
-      <p class="stocks"></p>
-    </div>
-  </header>
-  <div class="row qoute"></div>
-  <main class="row">
-    <div class="col-12 order-1 border-top border-bottom border-dark mb-1 col-sm-8" style="overflow: auto; height: 800px;">
-      <h1 class="text-primary news-heading text-center">Search The Top Headlines:</h1>
-      <form class="form-inline" id="news-form">
-        <input type="text" class="searchBar w-75 border" name="searchNews" required="required" />
-        <button type="submit" name="news-submit" id="news-submit">Submit</button>
-      </form>
-      <div id="news" style="overflow: auto; height: 800px;"></div>
-    </div>
-    <div class="col-12 order-2 border-top border-bottom border-dark mb-1 col-sm-4" style="overflow: auto; height: 800px;">
-      <div class="h-75" id="map"></div>
-      <div>
-        <form id="map-form" action="" class="row justify-content-center">
-          <label for="search" class="mr-1 mt-1">Search Area</label>
-          <input type="text" name="search" id="search" class="border mt-1 mr-1">
-          <button id="route-button" class="border-success text-success">Route</button>
-        </form>
-      </div>
-      <div class="row justify-content-center">
-        <button id="traffic-button" class="col-3 mx-1 border mt-1">Traffic</button>
-        <button id="transit-button" class="col-3 mx-1 border mt-1">Mass Transit</button>
-        <button id="biking-button" class="col-3 mx-1 border mt-1">Biking</button>
-      </div>
-    </div>
-  </main>
-  <footer>
-    <div class="col-12">
-      <div class=" col-12 w-100 border-top border-dark" id="movies" style="height: 200px; overflow: auto;">
-        <div class="Poster m-1 p-1 col-12 text-center"></div>
-        <div class="desc m-1 p-1 col-12 text-center ">
-          <h4 class="movieTitle"></h4>
-          <p><span class="year h6"></span></p>
-          <span class="rating text-success h6"></span>
-          <p class="summary"></p>
+  </div>
+  <div class="container">
+    <header class="row">
+      <div class="col-6 border-bottom border-dark d-flex order-1 col-sm-3 order-sm-1">
+        <div class="dateTime col mt-2">
+          <div class="date mb-3"></div>
+          <div class="time"></div>
         </div>
+        <div class="locationWeather col mt-2">
+          <div class="location mb-1"></div>
+          <div class="weather"></div>
+        </div>
+        </div>
+        <div class="col-12 border-bottom border-dark p-2 d-flex text-center col-sm-6 order-sm-2">
+          <div class="input-group input-group-lg greeting p-2 d-flex flex-column justify-content-center align-items-center">
+            <form id="greeting-form">
+              <input type="text" class="form-control " aria-label="Large" aria-describedby="inputGroup-sizing-sm"
+                placeholder="Please Enter Your Name">
+            </form>
+            <p class="greet d-none h1 text-dark"></p>
+          </div>
+        </div>
+        <div class="col-6 border-bottom border-dark stocks-wrapper d-flex order-2 col-sm-3 order-sm-3">
+          <p class="stocks"></p>
+        </div>
+      </header>
+      <div class="row qoute"></div>
+      <div class="container">
+        <main class="row w-100 justify-content-center">
+          <div class="col-12 order-1 mb-1 col-sm-8">
+            <h1 class="text-primary news-heading text-center">Search The Top Headlines:</h1>
+            <form class="form-inline" id="news-form">
+              <input type="text" class="searchBar w-75 mb-2" name="searchNews" required="required" />
+              <button type="submit" name="news-submit" id="news-submit" class="mb-2">Submit</button>
+            </form>
+            <div id="news"></div>
+          </div>
+        </main>
       </div>
     </div>
-  </footer>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="./components/clock.js"></script>
-  <script src="./components/greeting.js"></script>
-  <script src="./components/locationWeather.js"></script>
-  <script src="./components/movies.js"></script>
-  <script src="./components/stocks.js"></script>
-  <script src="./components/quotes.js"></script>
-  <script src="./components/news.js"></script>
-  <script src="./components/App.js"></script>
-  <script src="main.js"></script>
-  <script src="./components/maps.js"></script>
-  <script async defer
-          src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDaOU1SAe_B5ogKnNcBj-EqY_Lq8Y9cvDE&callback=initMap&libraries=places"></script>
-</body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="./components/clock.js"></script>
+    <script src="./components/greeting.js"></script>
+    <script src="./components/locationWeather.js"></script>
+    <script src="./components/stocks.js"></script>
+    <script src="./components/quotes.js"></script>
+    <script src="./components/news.js"></script>
+    <script src="./components/App.js"></script>
+    <script src="main.js"></script>
+  </body>
 </html>
