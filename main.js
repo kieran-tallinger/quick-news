@@ -2,12 +2,13 @@ const rightHeader = document.querySelector('.stocks')
 const dateTime = document.querySelector('.dateTime')
 const formElement = document.querySelector('#news-form');
 
-var news = new News(formElement);
-var greeting = new Greeting();
-var currnetLocationWeather = new CurrnetLocationWeather();
-let stockInfo = new Stocks()
-var quotes = new Quotes();
-var clock = new Clock(dateTime);
-var app = new App(quotes, currnetLocationWeather, greeting, news, stockInfo, clock);
+let news = new News(formElement);
+let greeting = new Greeting();
+let currnetLocationWeather = new CurrnetLocationWeather();
+let stockInfo = new Stocks();
+let quotes = new Quotes();
+let clock = new Clock(dateTime);
+let nasa = new Nasa();
+let app = new App(quotes, currnetLocationWeather, greeting, news, stockInfo, clock, nasa);
 
 app.start();
