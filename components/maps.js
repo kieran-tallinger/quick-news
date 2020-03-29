@@ -1,13 +1,12 @@
 let map,infoWindow,marker1,marker2, geocoder, directionsService, directionsRenderer;
-let searchInput = document.getElementById('search');
-let mapForm = document.getElementById('map-form');
-let mapSpot = document.getElementById('map');
-let routeButton = document.getElementById('route-button');
-let trafficButton = document.getElementById('traffic-button');
-let transitButton = document.getElementById('transit-button');
-let bikingButton = document.getElementById('biking-button');
+const searchInput = document.getElementById('search');
+const mapForm = document.getElementById('map-form');
+const mapSpot = document.getElementById('map');
+const routeButton = document.getElementById('route-button');
+const trafficButton = document.getElementById('traffic-button');
+const transitButton = document.getElementById('transit-button');
+const bikingButton = document.getElementById('biking-button');
 
-// primary callback function used in the google api script tag
 function initMap() {
   map = new google.maps.Map(mapSpot, {
     center: {lat: -34.397, lng: 150.644},
@@ -18,147 +17,129 @@ function initMap() {
   directionsRenderer = new google.maps.DirectionsRenderer();
   geocoder = new google.maps.Geocoder();
 
-  setMapListeners();
   directionsRenderer.setMap(map);
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(function(position) {
-      var pos = {
-        lat: position.coords.latitude,
-        lng: position.coords.longitude
-      };
-
-      marker1 = new google.maps.Marker({position: pos, map: map});
-      marker1.metadata = {type: 'point',id: 1};
-      infoWindow.setPosition(pos);
-      infoWindow.setContent("You're Here!");
-      infoWindow.open(map);
-      map.setCenter(pos);
-      setHandlers();
-    }, function() {
-      handleLocationError(true, infoWindow, map.getCenter());
-    });
-  } else {
-    handleLocationError(false, infoWindow, map.getCenter());
+  if (!navigator.geolocation) {
+      handleLocationError(false, infoWindow, map.getCenter());
   }
+  navigator.geolocation.getCurrentPosition(function(position) {
+    let pos = {
+      lat: position.coords.latitude,
+      lng: position.coords.longitude
+    };
+
+    marker1 = new google.maps.Marker({position: pos, map: map});
+    infoWindow.setPosition(pos);
+    infoWindow.setContent("You're Here!");
+    infoWindow.open(map);
+    map.setCenter(pos);
+    setHandlers();
+  }, function() {
+    handleLocationError(true, infoWindow, map.getCenter());
+  });
 }
 
-// modified initMap function to be used as callback upon Traffic Button click event
 function addTrafficLayer(map) {
   map = new google.maps.Map(mapSpot, {
     center: { lat: -34.397, lng: 150.644 },
-    zoom: 16
+    zoom: 14
   });
   infoWindow = new google.maps.InfoWindow;
   directionsService = new google.maps.DirectionsService();
   directionsRenderer = new google.maps.DirectionsRenderer();
   geocoder = new google.maps.Geocoder();
 
-  setMapListeners();
   directionsRenderer.setMap(map);
-  var trafficLayer = new google.maps.TrafficLayer();
+  const trafficLayer = new google.maps.TrafficLayer();
   trafficLayer.setMap(map);
 
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(function (position) {
-      var pos = {
-        lat: position.coords.latitude,
-        lng: position.coords.longitude
-      };
-
-      marker1 = new google.maps.Marker({ position: pos, map: map });
-      marker1.metadata = { type: 'point', id: 1 };
-      infoWindow.setPosition(pos);
-      infoWindow.setContent("traffic");
-      infoWindow.open(map);
-      map.setCenter(pos);
-      setHandlers();
-    }, function () {
-      handleLocationError(true, infoWindow, map.getCenter());
-    });
-  } else {
+  if (!navigator.geolocation) {
     handleLocationError(false, infoWindow, map.getCenter());
   }
+  navigator.geolocation.getCurrentPosition(function (position) {
+    let pos = {
+      lat: position.coords.latitude,
+      lng: position.coords.longitude
+    };
+
+    marker1 = new google.maps.Marker({ position: pos, map: map });
+    infoWindow.setPosition(pos);
+    infoWindow.setContent("You're Here!");
+    infoWindow.open(map);
+    map.setCenter(pos);
+    setHandlers();
+  }, function () {
+    handleLocationError(true, infoWindow, map.getCenter());
+  });
 }
 
-// modified initMap function to be used as callback upon Mass Transit Button click event
 function addTransitLayer(map) {
   map = new google.maps.Map(mapSpot, {
     center: { lat: -34.397, lng: 150.644 },
-    zoom: 16
+    zoom: 14
   });
   infoWindow = new google.maps.InfoWindow;
   directionsService = new google.maps.DirectionsService();
   directionsRenderer = new google.maps.DirectionsRenderer();
   geocoder = new google.maps.Geocoder();
 
-  setMapListeners();
   directionsRenderer.setMap(map);
-  var transitLayer = new google.maps.TransitLayer();
+  const transitLayer = new google.maps.TransitLayer();
   transitLayer.setMap(map);
 
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(function (position) {
-      var pos = {
-        lat: position.coords.latitude,
-        lng: position.coords.longitude
-      };
-
-      marker1 = new google.maps.Marker({ position: pos, map: map });
-      marker1.metadata = { type: 'point', id: 1 };
-      infoWindow.setPosition(pos);
-      infoWindow.setContent("transit");
-      infoWindow.open(map);
-      map.setCenter(pos);
-      setHandlers();
-    }, function () {
-      handleLocationError(true, infoWindow, map.getCenter());
-    });
-  } else {
+  if (!navigator.geolocation) {
     handleLocationError(false, infoWindow, map.getCenter());
   }
+  navigator.geolocation.getCurrentPosition(function (position) {
+    let pos = {
+      lat: position.coords.latitude,
+      lng: position.coords.longitude
+    };
+
+    marker1 = new google.maps.Marker({ position: pos, map: map });
+    infoWindow.setPosition(pos);
+    infoWindow.setContent("You're Here!");
+    infoWindow.open(map);
+    map.setCenter(pos);
+    setHandlers();
+  }, function () {
+    handleLocationError(true, infoWindow, map.getCenter());
+  });
 }
 
-// modified initMap function to be used as callback upon Biking Button click event
 function addBikingLayer(map){
   map = new google.maps.Map(mapSpot, {
     center: { lat: -34.397, lng: 150.644 },
-    zoom: 16
+    zoom: 14
   });
   infoWindow = new google.maps.InfoWindow;
   directionsService = new google.maps.DirectionsService();
   directionsRenderer = new google.maps.DirectionsRenderer();
   geocoder = new google.maps.Geocoder();
 
-  setMapListeners();
   directionsRenderer.setMap(map);
-  var bikingLayer = new google.maps.BicyclingLayer();
+  const bikingLayer = new google.maps.BicyclingLayer();
   bikingLayer.setMap(map)
 
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(function (position) {
-      var pos = {
-        lat: position.coords.latitude,
-        lng: position.coords.longitude
-      };
-
-      marker1 = new google.maps.Marker({ position: pos, map: map });
-      marker1.metadata = { type: 'point', id: 1 };
-      infoWindow.setPosition(pos);
-      infoWindow.setContent("biking");
-      infoWindow.open(map);
-      map.setCenter(pos);
-      setHandlers();
-    }, function () {
-      handleLocationError(true, infoWindow, map.getCenter());
-    });
-  } else {
+  if (!navigator.geolocation) {
     handleLocationError(false, infoWindow, map.getCenter());
   }
+  navigator.geolocation.getCurrentPosition(function (position) {
+    let pos = {
+      lat: position.coords.latitude,
+      lng: position.coords.longitude
+    };
 
+    marker1 = new google.maps.Marker({ position: pos, map: map });
+    infoWindow.setPosition(pos);
+    infoWindow.setContent("You're Here!");
+    infoWindow.open(map);
+    map.setCenter(pos);
+    setHandlers();
+  }, function () {
+    handleLocationError(true, infoWindow, map.getCenter());
+  });
 }
 
-// function used to place the event listener responsible for handling the enter key keyup event
-//   on the Search Area Input
 function handleFormSubmit() {
   searchInput.addEventListener('keyup', (event) => {
     let input = searchInput.value;
@@ -169,7 +150,6 @@ function handleFormSubmit() {
   })
 }
 
-// function used to place the event listener responsible for handling the click event on the map
 function setMapListeners(){
   google.maps.event.addListener(map, 'click', function (event) {
     if (marker1) {
@@ -180,8 +160,6 @@ function setMapListeners(){
   });
 }
 
-// function used to place the event listeners for the click events and their respective callbacks on
-//    the the three map layer buttons && calls the function handleFormSubmit
 function setHandlers() {
   trafficButton.addEventListener('click', addTrafficLayer);
   transitButton.addEventListener('click', addTransitLayer);
@@ -191,9 +169,9 @@ function setHandlers() {
     e.preventDefault();
   })
   handleFormSubmit();
+  setMapListeners();
 }
 
-// function used as a callback in the various map creation fucntions to handle geolocation errors
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {
   infoWindow.setPosition(pos);
   infoWindow.setContent(browserHasGeolocation ?
@@ -202,7 +180,6 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
   infoWindow.open(map);
 }
 
-// function used as a callback in reaction to a click event on the map to place a new marker object
 function placeNewMarker(newLocation){
   marker1 = new google.maps.Marker({
     position: newLocation,
@@ -216,17 +193,13 @@ function placeSearchMarker(newLocation) {
     map: map
   })
 }
-// function used as a callback in reaction to a click event if there is a pre-existing marker object
-//   to remove the old marker object
+
 function removeOldMarker(){
   marker1.setMap(null);
 }
 
-// function used as a callback in reaction to a keyup event if the key is 'enter' to change the value of
-//    the map center property to the new search inputs location || log the status failure causing a failed
-//    submit event
 function findPlace(inputVal) {
-  var place = inputVal
+  let place = inputVal
   geocoder.geocode( {'address': inputVal}, function(results, status) {
     if (status === 'OK'){
       if (marker2){
@@ -242,9 +215,9 @@ function findPlace(inputVal) {
 }
 
 function findRoute() {
-  var start = marker1.getPosition();
-  var end = marker2.getPosition();
-  var request = {
+  let start = marker1.getPosition();
+  let end = marker2.getPosition();
+  let request = {
     origin: start,
     destination: end,
     travelMode: 'DRIVING'
